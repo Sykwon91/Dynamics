@@ -1,88 +1,25 @@
 #include <iostream>
-struct Vec3
-{
-    double x;
-    double y;
-    double z;
-};
-
-struct Position
-{
-    Vec3 translation;
-    Vec3 rotation;
-    void display()
-    {
-        std::cout << this->translation.x << std::endl;
-        std::cout << this->translation.y << std::endl;
-        std::cout << this->translation.z << std::endl;
-        std::cout << this->rotation.x << std::endl;
-        std::cout << this->rotation.y << std::endl;
-        std::cout << this->rotation.z << std::endl;
-    };
-    void set(double x, double y, double z, double roll, double pitch, double yaw)
-    {
-        this->translation.x  = x;
-        this->translation.y = y;
-        this->translation.z = z;
-        this->rotation.x = roll;
-        this->rotation.y = pitch;
-        this->rotation.z = yaw;
-    }
-};
-
-struct Cylinder
-{
-    double H;
-    double R;
-    Position Center;
-    bool collision;
-    void display()
-    {
-        std::cout << "Radius : " <<  this->R << std::endl;
-        std::cout << "Height : " <<  this->H << std::endl;
-        std::cout << "Center : " << std::endl;
-        this->Center.display();
-    };
-    void checkcollsion(Position position)
-    {
-        if( (this->Center.translation.x - position.translation.x) * 
-            (this->Center.translation.x - position.translation.x) +
-            (this->Center.translation.z - position.translation.z) *
-            (this->Center.translation.z - position.translation.z)
-            < this->R * this->R
-        )
-        {
-            if( position.translation.y < this->Center.translation.y - this->H/2)
-            {
-                this->collision = false;
-            }
-            else if(position.translation.y > this->Center.translation.y + this->H/2)
-            {
-                this->collision = false;
-            }
-            else{this->collision = true;}
-        }
-    }
-    Cylinder(double Radius, double Height, Position position)
-    {
-        this->R = Radius;
-        this->H = Height;
-        this->Center = position;
-        this->collision = false;
-    };
-};
+#include "collision.h"
 
 int main()
 {
-    Position point,pointc;
-    point.set(1,0,0,0,0,0);
-    pointc.set(100,0,0,0,0,0);
-    Cylinder C1(1,1,point);
+    Position center{};
+    center.set(0, 0, 0, -1.5707, 0, 0);
 
-    C1.display();
-    C1.checkcollsion(pointc);
-    if(C1.collision){std::cout << "collsion" <<std::endl;}
-    else{std::cout << "no collision"<<std::endl;}
+    Cylinder cyl(1.0, 0.2, center);
+    Box box(1.0, 0.9, 1.0, center);
 
-    return 0;
+    Position p{};
+    p.set(0.0, 0.0, -0.5, 0, 0, 0);
+
+    cyl.checkcollsion(p);
+    box.checkcollsion(p);
+
+    std::cout << "cyl collision = "
+              << (cyl.collision ? "true" : "false")
+              << std::endl;
+
+    std::cout << "box collision = "
+              << (box.collision ? "true" : "false")
+              << std::endl;            
 }

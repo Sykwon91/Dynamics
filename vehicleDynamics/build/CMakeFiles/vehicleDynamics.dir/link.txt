@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/vehicleDynamics.dir/src/main.cpp.o -o vehicleDynamics  libcollision.a 
