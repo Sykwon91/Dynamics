@@ -24,3 +24,16 @@ struct Cylinder
     void checkcollsion(Position position);
     Cylinder(double Radius, double Height, Position position);
 };
+
+struct Box
+{
+    double L;
+    double W;
+    double H;
+    Position Center;
+    bool collision;
+
+    void display();
+    void checkcollsion(Position position);
+    Box(double Long, double Width, double Height, Position position);
+};
