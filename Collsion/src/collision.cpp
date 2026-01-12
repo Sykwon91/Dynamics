@@ -97,9 +97,6 @@ void Box::checkcollsion(Vec3 position)
     const double dy = (cosz * siny * sinx - sinz * cosx) * dxyz.x + (sinz * siny * sinx + cosz * cosx) * dxyz.y + (sinx * cosy) * dxyz.z;
     const double dz = (cosz * siny * cosx + sinz * sinx) * dxyz.x + (sinz * siny * cosx - cosz * sinx) * dxyz.y + (cosx * cosy) * dxyz.z;
 
-    std::cout << dx << std::endl;
-    std::cout << dy << std::endl;
-    std::cout << dz << std::endl;
     if (abs(dx) < this->L/2.f)
     {
         if(abs(dy) < this->W/2.f)
@@ -138,15 +135,36 @@ Vec3 Plane::collisionPoint(Cylinder cyl)
     
 
     //this->norm;
-    if((this->norm.cross(Hdirection)).dot(Hdirection) > 0.99)
+    if(abs(this->norm.dot(Hdirection)) < 0.999)
     {
-        return cyl.Center.translation + cyl.H/2.f * (this->norm.cross(Hdirection)).cross(Hdirection);
+        Vec3 Rvec = (this->norm - this->norm.dot(Hdirection) * Hdirection);
+        
+        if(this->norm.dot(Hdirection) > 0)
+        {
+            return cyl.R * (1.f/sqrt(Rvec.dot(Rvec))) * Rvec + cyl.Center.translation - 0.5 * cyl.H * Hdirection;
+            
+        }
+        else if(this->norm.dot(Hdirection) < 0)
+        {
+            return cyl.R * (1.f/sqrt(Rvec.dot(Rvec))) * Rvec + cyl.Center.translation + 0.5 * cyl.H * Hdirection;
+            
+        }
+        else
+        {
+            return cyl.R * (1.f/sqrt(Rvec.dot(Rvec))) * Rvec + cyl.Center.translation;
+        }
     }
     else
     {
-        return cyl.Center.translation - cyl.R * (this->norm);
+        if(this->norm.dot(Hdirection) > 0)
+        {
+            return cyl.Center.translation + 0.5 * cyl.H * Hdirection;
+             
+        }
+        else
+        {
+            return cyl.Center.translation - 0.5 * cyl.H * Hdirection;
+        }
     }
-    // - distance * this->norm;
-    //return cyl.Center.translation  - distance/2.f * this->norm * 0.f - cyl.R * this->norm.dot(Rdirection) * Rdirection  - cyl.H/2.f * this->norm.dot(Hdirection) /(abs(this->norm.dot(Hdirection))+ 0.01) * Hdirection;
-    //return cyl.Center.translation  - cyl.R * this->norm.dot(Rdirection) * Rdirection - cyl.H/2.f * this->norm.dot(Hdirection) * Hdirection;
+    
 }

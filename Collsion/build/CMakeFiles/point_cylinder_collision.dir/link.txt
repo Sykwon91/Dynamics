@@ -1,2 +1,0 @@
-/usr/bin/ar qc libpoint_cylinder_collision.a CMakeFiles/point_cylinder_collision.dir/src/collision.cpp.o
-/usr/bin/ranlib libpoint_cylinder_collision.a
