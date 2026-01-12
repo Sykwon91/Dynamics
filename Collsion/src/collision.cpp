@@ -141,29 +141,29 @@ Vec3 Plane::collisionPoint(Cylinder cyl)
         
         if(this->norm.dot(Hdirection) > 0)
         {
-            return cyl.R * (1.f/sqrt(Rvec.dot(Rvec))) * Rvec + cyl.Center.translation - 0.5 * cyl.H * Hdirection;
+            return -cyl.R * (1.f/sqrt(Rvec.dot(Rvec))) * Rvec + cyl.Center.translation - 0.5 * cyl.H * Hdirection;
             
         }
         else if(this->norm.dot(Hdirection) < 0)
         {
-            return cyl.R * (1.f/sqrt(Rvec.dot(Rvec))) * Rvec + cyl.Center.translation + 0.5 * cyl.H * Hdirection;
+            return -cyl.R * (1.f/sqrt(Rvec.dot(Rvec))) * Rvec + cyl.Center.translation + 0.5 * cyl.H * Hdirection;
             
         }
         else
         {
-            return cyl.R * (1.f/sqrt(Rvec.dot(Rvec))) * Rvec + cyl.Center.translation;
+            return -cyl.R * (1.f/sqrt(Rvec.dot(Rvec))) * Rvec + cyl.Center.translation;
         }
     }
     else
     {
         if(this->norm.dot(Hdirection) > 0)
         {
-            return cyl.Center.translation + 0.5 * cyl.H * Hdirection;
+            return cyl.Center.translation - 0.5 * cyl.H * Hdirection;
              
         }
         else
         {
-            return cyl.Center.translation - 0.5 * cyl.H * Hdirection;
+            return cyl.Center.translation + 0.5 * cyl.H * Hdirection;
         }
     }
     

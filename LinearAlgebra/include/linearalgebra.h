@@ -63,13 +63,12 @@ struct Mat3
         {0.0, 0.0, 0.0}
     };
 
-    static Mat3 Identity()
+    void Identity()
     {
-        Mat3 I;
-        I.mat[0][0] = 1.0;
-        I.mat[1][1] = 1.0;
-        I.mat[2][2] = 1.0;
-        return I;
+        
+        this->mat[0][0] = 1.0;
+        this->mat[1][1] = 1.0;
+        this->mat[2][2] = 1.0;
     }
 
     Mat3 operator*(double scale) const
