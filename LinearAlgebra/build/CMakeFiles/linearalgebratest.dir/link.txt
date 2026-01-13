@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/linearalgebratest.dir/src/main.cpp.o -o linearalgebratest  /home/kwon/Dynamics/LinearAlgebra/lib/liblinearalgebra.a 
+/usr/bin/c++ CMakeFiles/linearalgebratest.dir/src/main.cpp.o -o linearalgebratest  liblinearalgebra.a 

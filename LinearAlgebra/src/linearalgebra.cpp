@@ -55,6 +55,38 @@
         this->mat[2][2] = 1.0;
     }
 
+    void Mat3::Rx(double roll)
+    {
+        double cr = cos(roll);
+        double sr = sin(roll);
+        this->mat[0][0] = 1.0;
+        this->mat[1][1] = cr;
+        this->mat[1][2] = -sr;
+        this->mat[2][1] = sr;
+        this->mat[2][2] = cr;
+    }
+    void Mat3::Ry(double pitch)
+    {
+        double cp = cos(pitch);
+        double sp = sin(pitch);
+        this->mat[0][0] = cp;
+        this->mat[0][2] = sp;
+        this->mat[1][1] = 1.0;
+        this->mat[2][0] = -sp;
+        this->mat[2][2] = cp;
+    }
+
+    void Mat3::Rz(double yaw)
+    {
+        double cy = cos(yaw);
+        double sy = sin(yaw);
+        this->mat[0][0] = cy;
+        this->mat[0][1] = -sy;
+        this->mat[1][0] = sy;
+        this->mat[1][1] = cy;
+        this->mat[2][2] = 1.0;
+    }
+
     Mat3 Mat3::operator*(double scale) const
     {
         Mat3 out;

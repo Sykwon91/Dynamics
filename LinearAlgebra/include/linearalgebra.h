@@ -35,6 +35,12 @@ struct Mat3
 
     void Identity();
 
+    void Rx(double roll);
+    
+    void Ry(double pitch);
+
+    void Rz(double yaw);
+
     Mat3 operator*(double scale) const;
 
     friend Mat3 operator*(double scale, const Mat3& m);
