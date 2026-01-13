@@ -17,4 +17,4 @@ add_library(linearalgebra
 
 
 add_executable(linearalgebratest src/main.cpp)
-target_link_libraries(linearalgebra PRIVATE ${CMAKE_SOURCE_DIR}/build/liblinearalgebra.a)
+target_link_libraries(linearalgebratest PRIVATE ${CMAKE_SOURCE_DIR}/lib/liblinearalgebra.a)
