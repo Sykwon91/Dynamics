@@ -28,3 +28,10 @@ position position::InvereseKinematics(const position& child) const
     Inverse.orientation = (this->toRotationMatrix().transpose() * child.toRotationMatrix()).toEuler();
     return Inverse;
 }
+
+velocity velocity::ForwardKinematics(const velocity& child) const
+{
+    velocity Forward;
+    Forward.translation = this->translation + this->frame_position.toRotationMatrix() * child.translation +   this->toDotRotationMatrix() * this->frame_position.toRotationMatrix() * child.frame_position.translation;
+
+}
