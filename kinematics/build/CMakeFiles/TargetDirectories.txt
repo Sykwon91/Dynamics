@@ -1,0 +1,4 @@
+/home/kwon/Dynamics/kinematics/build/CMakeFiles/kinematics.dir
+/home/kwon/Dynamics/kinematics/build/CMakeFiles/kinematicstest.dir
+/home/kwon/Dynamics/kinematics/build/CMakeFiles/edit_cache.dir
+/home/kwon/Dynamics/kinematics/build/CMakeFiles/rebuild_cache.dir

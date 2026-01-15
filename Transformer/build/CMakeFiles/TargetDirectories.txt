@@ -1,0 +1,4 @@
+/home/kwon/Dynamics/Transformer/build/CMakeFiles/transformer.dir
+/home/kwon/Dynamics/Transformer/build/CMakeFiles/transformertest.dir
+/home/kwon/Dynamics/Transformer/build/CMakeFiles/edit_cache.dir
+/home/kwon/Dynamics/Transformer/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libtransformer.a CMakeFiles/transformer.dir/src/transformer.cpp.o
+/usr/bin/ranlib libtransformer.a

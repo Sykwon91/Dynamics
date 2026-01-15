@@ -55,7 +55,7 @@
         this->mat[2][2] = 1.0;
     }
 
-    void Mat3::Rx(double roll)
+    void Mat3::Rx(double roll) 
     {
         double cr = cos(roll);
         double sr = sin(roll);
@@ -65,7 +65,7 @@
         this->mat[2][1] = sr;
         this->mat[2][2] = cr;
     }
-    void Mat3::Ry(double pitch)
+    void Mat3::Ry(double pitch) 
     {
         double cp = cos(pitch);
         double sp = sin(pitch);
@@ -76,7 +76,7 @@
         this->mat[2][2] = cp;
     }
 
-    void Mat3::Rz(double yaw)
+    void Mat3::Rz(double yaw) 
     {
         double cy = cos(yaw);
         double sy = sin(yaw);
@@ -85,6 +85,30 @@
         this->mat[1][0] = sy;
         this->mat[1][1] = cy;
         this->mat[2][2] = 1.0;
+    }
+
+    Vec3 Mat3::toEuler() const
+    {
+        Vec3 e;
+        if (std::abs(this->mat[0][2]) < 1.0) 
+        {
+            e.y = std::asin(-this->mat[0][2]);
+            if(std::cos(e.y) > 0) e.x  = std::atan2(this->mat[2][1], this->mat[2][2]);
+            else  e.x  = std::atan2(-this->mat[2][1],-this->mat[2][2]);
+            if(std::cos(e.y) > 0) e.z   = std::atan2(this->mat[1][0], this->mat[0][0]);
+            else{e.z   = std::atan2(-this->mat[1][0], -this->mat[0][0]);}
+            
+        }
+        else
+        {
+            // Gimbal lock
+            e.y = (this->mat[0][2] <= -1.0) ? -M_PI / 2.0 : M_PI / 2.0;
+            e.x  = 0.0;
+            if(std::cos(e.y) > 0) e.z   = std::atan2(this->mat[1][0], this->mat[0][0]);
+            else{e.z   = std::atan2(-this->mat[1][0], -this->mat[0][0]);}
+        }
+    
+        return e;
     }
 
     Mat3 Mat3::operator*(double scale) const

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/kinematicstest.dir/src/main.cpp.o -o kinematicstest  libkinematics.a libkinematics.a ../lib/liblinearalgebra.a 
