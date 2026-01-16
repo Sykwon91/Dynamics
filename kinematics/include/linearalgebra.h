@@ -68,6 +68,8 @@ struct Mat3
 
     Vec3 toEuler() const;
 
+    Vec3 toDotEuler() const;
+
     Mat3 operator*(double scale) const;
 
     friend Mat3 operator*(double scale, const Mat3& m);
@@ -77,6 +79,8 @@ struct Mat3
     Mat3 operator*(const Mat3& other) const;
 
     Mat3 operator+(const Mat3& other) const;
+
+    Mat3 operator-(const Mat3& other) const;
 
     Mat3 transpose() const;
 };

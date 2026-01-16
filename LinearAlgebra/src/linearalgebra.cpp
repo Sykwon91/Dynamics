@@ -111,6 +111,11 @@
         return e;
     }
 
+    Vec3 Mat3::toDotEuler() const
+    {
+        return Vec3{-this->mat[1][2],this->mat[0][2],-this->mat[0][1]};
+    }
+
     Mat3 Mat3::operator*(double scale) const
     {
         Mat3 out;
@@ -157,6 +162,19 @@
             for (int c = 0; c < 3; ++c)
             {
                 out.mat[r][c] = this->mat[r][c] + other.mat[r][c];
+            }
+        }
+        return out;
+    }
+
+    Mat3 Mat3::operator-(const Mat3& other) const
+    {
+        Mat3 out;
+        for (int r = 0; r < 3; ++r)
+        {
+            for (int c = 0; c < 3; ++c)
+            {
+                out.mat[r][c] = this->mat[r][c] - other.mat[r][c];
             }
         }
         return out;

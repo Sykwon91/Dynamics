@@ -8,28 +8,27 @@ struct position
     Vec3 orientation;
     Mat3 toRotationMatrix() const;
     position ForwardKinematics(const position& child) const;
-    position InvereseKinematics(const position& child) const;
+    position InverseKinematics(const position& child) const;
 };
 
 struct velocity
 {
-    std::string frame{};
+    position frame_position;
     Vec3 translation;
     Vec3 orientation;
-    position frame_position;
-    Mat3 toDotRotationMatrix() const;
+    
+    Mat3 toAngularVelocitySkew() const;
     velocity ForwardKinematics(const velocity& child) const;
-    velocity InvereseKinematics(const velocity& child) const;
+    velocity InverseKinematics(const velocity& child) const;
 };
 
 struct acceleration
 {
-    std::string frame{};
-    Vec3 translation;
-    Vec3 orientation;
     position frame_position;
     velocity frame_velocity;
-    Mat3 toDDotRotationMatrix() const;
+    Vec3 translation;
+    Vec3 orientation;
+    Mat3 toAngularAccelerationSkew() const;
     acceleration ForwardKinematics() const;
     acceleration InvereseKinematics() const;
 };
