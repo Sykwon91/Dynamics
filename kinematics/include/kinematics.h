@@ -29,6 +29,6 @@ struct acceleration
     Vec3 translation;
     Vec3 orientation;
     Mat3 toAngularAccelerationSkew() const;
-    acceleration ForwardKinematics() const;
-    acceleration InvereseKinematics() const;
+    acceleration ForwardKinematics(const acceleration& child) const;
+    acceleration InvereseKinematics(const acceleration& child) const;
 };
