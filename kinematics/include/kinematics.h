@@ -24,7 +24,6 @@ struct velocity
 
 struct acceleration
 {
-    position frame_position;
     velocity frame_velocity;
     Vec3 translation;
     Vec3 orientation;

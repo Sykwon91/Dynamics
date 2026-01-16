@@ -84,16 +84,15 @@ acceleration acceleration::ForwardKinematics(const acceleration& child) const
     acceleration Forward;
     //this->frame_velocity = this->frame_velocity.ForwardKinematics(child.frame_velocity);
     Forward.translation = this->translation
-                         + this->frame_velocity.toAngularVelocitySkew() * this->frame_position.toRotationMatrix() * this->frame_velocity.translation 
-                         + this->frame_position.toRotationMatrix() * child.translation
-                         + this->toAngularAccelerationSkew() * this->frame_position.toRotationMatrix() * this->frame_position.translation
-                         + this->frame_velocity.toAngularVelocitySkew() * this->frame_velocity.toAngularVelocitySkew() * this->frame_position.toRotationMatrix() * child.translation
-                         + this->frame_velocity.toAngularVelocitySkew() * this->frame_position.toRotationMatrix() * this->frame_velocity.translation ;
+                         + this->toAngularAccelerationSkew() * this->frame_velocity.frame_position.toRotationMatrix() * child.frame_velocity.frame_position.translation 
+                         + this->frame_velocity.toAngularVelocitySkew() * this->frame_velocity.toAngularVelocitySkew() * this->frame_velocity.frame_position.toRotationMatrix() * child.frame_velocity.frame_position.translation
+                         + 2 * this->frame_velocity.toAngularVelocitySkew() * this->frame_velocity.frame_position.toRotationMatrix() * child.frame_velocity.translation
+                         + this->frame_velocity.frame_position.toRotationMatrix() * child.translation;
     
     Mat3 DDotRotationMatrix = this->toAngularAccelerationSkew()
-                             + this->frame_velocity.toAngularVelocitySkew() * this->frame_position.toRotationMatrix() * child.frame_velocity.toAngularVelocitySkew() * child.frame_position.toRotationMatrix().transpose()
-                             + this->frame_position.toRotationMatrix() * this-> toAngularAccelerationSkew() * child.frame_position.toRotationMatrix().transpose()
-                             + this->frame_position.toRotationMatrix()  * child.frame_velocity.toAngularVelocitySkew() * this->frame_position.transpose() * this->frame_velocity.toAngularVelocitySkew().transpose();
+                             + this->frame_velocity.toAngularVelocitySkew() * this->frame_velocity.frame_position.toRotationMatrix() * child.frame_velocity.toAngularVelocitySkew() * this->frame_velocity.frame_position.toRotationMatrix().transpose()
+                             + this->frame_velocity.frame_position.toRotationMatrix() * child.toAngularAccelerationSkew() * this->frame_velocity.frame_position.toRotationMatrix().transpose()
+                             + this->frame_velocity.frame_position.toRotationMatrix()  * child.frame_velocity.toAngularVelocitySkew() * this->frame_velocity.frame_position.toRotationMatrix().transpose() * this->frame_velocity.toAngularVelocitySkew().transpose();
     Forward.orientation = DDotRotationMatrix.toDotEuler();
     return Forward;   
 }
