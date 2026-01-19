@@ -101,6 +101,8 @@ acceleration acceleration::ForwardKinematics(const acceleration& child) const
 acceleration acceleration::InverseKinematics(const acceleration& child) const
 {
     acceleration Inverse;
+    Inverse.frame_velocity = this->frame_velocity.InverseKinematics(child.frame_velocity);
+    Inverse.orientation = (this->frame_velocity.frame_position.toRotationMatrix().transpose() * (child.toAngularAccelerationSkew() - this ->toAngularAccelerationSkew()) * this->frame_velocity.frame_position.toRotationMatrix().transpose()).toDotEuler();
     Inverse.translation = child.translation -  this->translation;
     return Inverse;
 }
