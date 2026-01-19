@@ -20,6 +20,7 @@ struct velocity
     Mat3 toAngularVelocitySkew() const;
     velocity ForwardKinematics(const velocity& child) const;
     velocity InverseKinematics(const velocity& child) const;
+    void update(const position& frame);
 };
 
 struct acceleration
@@ -29,5 +30,7 @@ struct acceleration
     Vec3 orientation;
     Mat3 toAngularAccelerationSkew() const;
     acceleration ForwardKinematics(const acceleration& child) const;
-    acceleration InvereseKinematics(const acceleration& child) const;
+    acceleration InverseKinematics(const acceleration& child) const;
+    void update();
+    void update(const velocity& frame);
 };

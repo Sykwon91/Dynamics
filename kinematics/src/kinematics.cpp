@@ -45,6 +45,7 @@ position position::InverseKinematics(const position& child) const
 velocity velocity::ForwardKinematics(const velocity& child) const
 {
     velocity Forward;
+    Forward.frame_position = this->frame_position.ForwardKinematics(child.frame_position);
     Forward.translation = this->translation
                          + this->frame_position.toRotationMatrix() * child.translation 
                          + this->toAngularVelocitySkew() * this->frame_position.toRotationMatrix() * child.frame_position.translation;
@@ -82,7 +83,7 @@ Mat3 acceleration::toAngularAccelerationSkew() const
 acceleration acceleration::ForwardKinematics(const acceleration& child) const
 {
     acceleration Forward;
-    //this->frame_velocity = this->frame_velocity.ForwardKinematics(child.frame_velocity);
+    Forward.frame_velocity = this->frame_velocity.ForwardKinematics(child.frame_velocity);
     Forward.translation = this->translation
                          + this->toAngularAccelerationSkew() * this->frame_velocity.frame_position.toRotationMatrix() * child.frame_velocity.frame_position.translation 
                          + this->frame_velocity.toAngularVelocitySkew() * this->frame_velocity.toAngularVelocitySkew() * this->frame_velocity.frame_position.toRotationMatrix() * child.frame_velocity.frame_position.translation
@@ -95,4 +96,11 @@ acceleration acceleration::ForwardKinematics(const acceleration& child) const
                              + this->frame_velocity.frame_position.toRotationMatrix()  * child.frame_velocity.toAngularVelocitySkew() * this->frame_velocity.frame_position.toRotationMatrix().transpose() * this->frame_velocity.toAngularVelocitySkew().transpose();
     Forward.orientation = DDotRotationMatrix.toDotEuler();
     return Forward;   
+}
+
+acceleration acceleration::InverseKinematics(const acceleration& child) const
+{
+    acceleration Inverse;
+    Inverse.translation = child.translation -  this->translation;
+    return Inverse;
 }
