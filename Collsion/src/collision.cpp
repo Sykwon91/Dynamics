@@ -121,7 +121,7 @@ Plane::Plane(Vec3 norm, Vec3 point)
     this->point = point;
 }
 
-Vec3 Plane::collisionPoint(Cylinder cyl)
+Vec3 Plane::closest(Cylinder cyl)
 {
     double distance = this->norm.dot(cyl.Center.translation - this->point)/sqrt(this->norm.dot(this->norm));
     double cosx = cos(cyl.Center.rotation.x);

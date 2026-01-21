@@ -12,7 +12,7 @@ int main()
 
     Position p{};
     p.set(0.0, 0.0, -0.5, 0, 0, 0);
-    Vec3 test = plane.collisionPoint(cyl);
+    Vec3 test = plane.closest(cyl);
     cyl.checkcollsion(test);
     box.checkcollsion(p.translation);
     

@@ -89,6 +89,6 @@ struct Plane
 
     void display();
     void checkcollsion(Position position);
-    Vec3 collisionPoint(Cylinder cyl);
+    Vec3 closest(Cylinder cyl);
     Plane(Vec3 norm, Vec3 point);
 };
