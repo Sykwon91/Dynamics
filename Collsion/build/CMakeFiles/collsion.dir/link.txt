@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/collsion.dir/src/main.cpp.o -o collsion  libcollision.a 
+/usr/bin/c++ CMakeFiles/collsion.dir/src/main.cpp.o -o collsion  libcollision.a liblinearalgebra.a 

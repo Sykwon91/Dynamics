@@ -168,3 +168,9 @@ Vec3 Plane::closest(Cylinder cyl)
     }
     
 }
+
+
+Vec3 Plane::closest(Box box)
+{
+    return box.Center.translation;
+}

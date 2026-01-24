@@ -18,3 +18,4 @@ add_library(collision
 
 add_executable(collsion src/main.cpp)
 target_link_libraries(collsion PRIVATE ${CMAKE_SOURCE_DIR}/build/libcollision.a)
+target_link_libraries(collsion PRIVATE ${CMAKE_SOURCE_DIR}/build/liblinearalgebra.a)

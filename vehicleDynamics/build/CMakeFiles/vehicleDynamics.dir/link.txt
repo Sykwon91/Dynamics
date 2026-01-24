@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/vehicleDynamics.dir/src/main.cpp.o -o vehicleDynamics  libcollision.a 
+/usr/bin/c++ CMakeFiles/vehicleDynamics.dir/src/main.cpp.o -o vehicleDynamics  /home/kwon/Dynamics/vehicleDynamics/lib/libcollision.a /home/kwon/Dynamics/vehicleDynamics/lib/libkinematics.a /home/kwon/Dynamics/vehicleDynamics/lib/liblinearalgebra.a 

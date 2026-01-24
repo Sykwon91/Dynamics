@@ -1,52 +1,7 @@
 #pragma once
+#include "linearalgebra.h"
 #include <iostream>
 #include <math.h>
-
-struct Vec3 
-{
-    double x; double y; double z; 
-    Vec3 operator+(const Vec3& other) const
-    {
-        return Vec3{
-            this->x + other.x,
-            this->y + other.y,
-            this->z + other.z
-        };
-    }
-    Vec3 operator-(const Vec3& other) const
-    {
-        return Vec3{
-            this->x - other.x,
-            this->y - other.y,
-            this->z - other.z
-        };
-    }
-    Vec3 operator*(const double& scale) const
-    {
-        return Vec3{
-            scale * this->x,
-            scale * this->y,
-            scale * this->z
-        };
-    }
-    friend Vec3 operator*(const double& scale, const Vec3& Vec) 
-    {
-        return Vec3{
-            scale * Vec.x,
-            scale * Vec.y,
-            scale * Vec.z
-        };
-    }
-    double dot(const Vec3& other) const
-    {
-        return x * other.x + y * other.y + z * other.z;
-    }
-    Vec3 cross(const Vec3& other) const
-    {
-        
-        return Vec3{this->y * other.z - this->z * other.y, this->z * other.x - this->x * other.z, this->x * other.y - this->y * other.x};
-    }
-};
 
 struct Position
 {
@@ -90,5 +45,6 @@ struct Plane
     void display();
     void checkcollsion(Position position);
     Vec3 closest(Cylinder cyl);
+    Vec3 closest(Box box);
     Plane(Vec3 norm, Vec3 point);
 };

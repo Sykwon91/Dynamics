@@ -1,8 +1,7 @@
 #pragma once
+#include "linearalgebra.h"
 #include <iostream>
 #include <math.h>
-
-struct Vec3 { double x; double y; double z; };
 
 struct Position
 {
@@ -21,7 +20,7 @@ struct Cylinder
     bool collision;
 
     void display();
-    void checkcollsion(Position position);
+    void checkcollsion(Vec3 position);
     Cylinder(double Radius, double Height, Position position);
 };
 
@@ -34,6 +33,18 @@ struct Box
     bool collision;
 
     void display();
-    void checkcollsion(Position position);
+    void checkcollsion(Vec3 position);
     Box(double Long, double Width, double Height, Position position);
+};
+
+struct Plane
+{
+    Vec3 norm;
+    Vec3 point;
+
+    void display();
+    void checkcollsion(Position position);
+    Vec3 closest(Cylinder cyl);
+    Vec3 closest(Box box);
+    Plane(Vec3 norm, Vec3 point);
 };
