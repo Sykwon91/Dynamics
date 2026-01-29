@@ -123,7 +123,7 @@ Plane::Plane(Vec3 norm, Vec3 point)
 
 Vec3 Plane::closest(Cylinder cyl)
 {
-    double distance = this->norm.dot(cyl.Center.translation - this->point)/sqrt(this->norm.dot(this->norm));
+    //double distance = this->norm.dot(cyl.Center.translation - this->point)/sqrt(this->norm.dot(this->norm));
     double cosx = cos(cyl.Center.rotation.x);
     double cosy = cos(cyl.Center.rotation.y);
     double cosz = cos(cyl.Center.rotation.z);
@@ -172,5 +172,35 @@ Vec3 Plane::closest(Cylinder cyl)
 
 Vec3 Plane::closest(Box box)
 {
-    return box.Center.translation;
+    Vec3 localpoint[8] =
+    {
+        Vec3{box.L/2.f, box.W/2.f, box.H/2.f},
+        Vec3{box.L/2.f, -box.W/2.f, box.H/2.f},
+        Vec3{-box.L/2.f, box.W/2.f, box.H/2.f},
+        Vec3{-box.L/2.f, -box.W/2.f, box.H/2.f},
+        Vec3{box.L/2.f, box.W/2.f, -box.H/2.f},
+        Vec3{box.L/2.f, -box.W/2.f, -box.H/2.f},
+        Vec3{-box.L/2.f, box.W/2.f, -box.H/2.f},
+        Vec3{-box.L/2.f, -box.W/2.f, -box.H/2.f}
+    };
+    Mat3 R,Rx,Ry,Rz;
+    Rx.Rx(box.Center.rotation.x);
+    Ry.Ry(box.Center.rotation.y);
+    Rz.Rz(box.Center.rotation.z);
+    R = Rz * Ry * Rx;
+    Vec3 closestPoint = box.Center.translation + R * localpoint[0];
+    double min = this->norm.dot( closestPoint - this->point);
+    for(int i = 1 ; i < 8 ; i++)
+    {
+        
+        if(min > this->norm.dot( box.Center.translation + R * localpoint[i] - this->point))
+        {
+            min =  this->norm.dot( box.Center.translation + R * localpoint[i] - this->point);
+            closestPoint = box.Center.translation + R * localpoint[i];
+            //std::cout << i << "," << min <<"," <<this->norm.dot( box.Center.translation + R * localpoint[i] - this->point)<< std::endl;
+        }
+        
+    }
+
+    return closestPoint;
 }
