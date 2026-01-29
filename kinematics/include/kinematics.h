@@ -5,7 +5,8 @@
 
 struct position
 {
-    std::string frame{}; 
+    std::string frame{};
+    std::string childframe{};
     Vec3 translation;
     Vec3 orientation;
     Mat3 toRotationMatrix() const;

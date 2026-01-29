@@ -13,6 +13,7 @@ position position::ForwardKinematics(const position& child) const
 {
     position Forward;
     Forward.frame = this->frame;
+    Forward.childframe = child.childframe;
     Forward.translation = this->translation + this->toRotationMatrix() * child.translation;
     Forward.orientation = (this->toRotationMatrix() * child.toRotationMatrix()).toEuler();
     return Forward;
@@ -36,7 +37,7 @@ position position::InverseKinematics(const position& child) const
 {
     //if(this->frame == child.frame) return this;
     position Inverse;
-    Inverse.frame = "";
+    Inverse.frame = this->childframe;
     Inverse.translation =   this->toRotationMatrix().transpose() * (child.translation - this->translation);
     Inverse.orientation = (this->toRotationMatrix().transpose() * child.toRotationMatrix()).toEuler();
     return Inverse;

@@ -4,8 +4,8 @@
 
 int main()
 {
-    position x{"world", Vec3{1,2,3}, Vec3{0,0,0}};
-    position y{"base_link", Vec3{1,2,3}, Vec3{0,0,0}};
+    position x{"world", "world", Vec3{1,2,3}, Vec3{0,0,0}};
+    position y{"base_link","base_link", Vec3{1,2,3}, Vec3{0,0,0}};
     position xy = x.ForwardKinematics(y);
     position inv = x.InverseKinematics(xy);
 
