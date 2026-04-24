@@ -1,20 +1,12 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(transformer
-    VERSION 1.0
-    LANGUAGES CXX
-)
-include_directories(include)
+project(transformer VERSION 1.0 LANGUAGES CXX)
 
-# 실행 파일
-#add_executable(transformer
-#    src/main.cpp
-#)
+add_library(transformer src/transformer.cpp)
 
-add_library(transformer
-    src/transformer.cpp
-)
-
+target_include_directories(transformer PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_compile_features(transformer PUBLIC cxx_std_17)
+set_target_properties(transformer PROPERTIES OUTPUT_NAME transformer)
 
 add_executable(transformertest src/main.cpp)
-target_link_libraries(transformer PRIVATE ${CMAKE_SOURCE_DIR}/build/libtransformer.a)
+target_link_libraries(transformertest PRIVATE transformer)

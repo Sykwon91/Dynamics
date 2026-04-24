@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/libcollision.a CMakeFiles/collision.dir/src/collision.cpp.o
+/usr/bin/ranlib ../lib/libcollision.a

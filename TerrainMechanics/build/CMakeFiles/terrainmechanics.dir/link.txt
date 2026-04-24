@@ -1,0 +1,2 @@
+/usr/bin/ar qc libterrainmechanics.a CMakeFiles/terrainmechanics.dir/src/TerrainMechanics.cpp.o
+/usr/bin/ranlib libterrainmechanics.a

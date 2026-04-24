@@ -1,4 +1,0 @@
-/home/kwon/Dynamics/Collsion/build/CMakeFiles/collision.dir
-/home/kwon/Dynamics/Collsion/build/CMakeFiles/collsion.dir
-/home/kwon/Dynamics/Collsion/build/CMakeFiles/edit_cache.dir
-/home/kwon/Dynamics/Collsion/build/CMakeFiles/rebuild_cache.dir

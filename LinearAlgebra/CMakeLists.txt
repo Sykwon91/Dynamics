@@ -1,20 +1,12 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(linearalgebra
-    VERSION 1.0
-    LANGUAGES CXX
-)
-include_directories(include)
+project(linearalgebra VERSION 1.0 LANGUAGES CXX)
 
-# 실행 파일
-#add_executable(point_cylinder_collision
-#    src/main.cpp
-#)
+add_library(linearalgebra src/linearalgebra.cpp)
 
-add_library(linearalgebra
-    src/linearalgebra.cpp
-)
-
+target_include_directories(linearalgebra PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_compile_features(linearalgebra PUBLIC cxx_std_17)
+set_target_properties(linearalgebra PROPERTIES OUTPUT_NAME linearalgebra)
 
 add_executable(linearalgebratest src/main.cpp)
-target_link_libraries(linearalgebratest PRIVATE ${CMAKE_SOURCE_DIR}/build/liblinearalgebra.a)
+target_link_libraries(linearalgebratest PRIVATE linearalgebra)

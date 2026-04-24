@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/collsion.dir/src/main.cpp.o -o ../bin/collsion  ../lib/libcollision.a ../lib/liblinearalgebra.a 

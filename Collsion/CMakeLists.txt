@@ -1,21 +1,17 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(point_cylinder_collision
-    VERSION 1.0
-    LANGUAGES CXX
-)
-include_directories(include)
+project(collision_module VERSION 1.0 LANGUAGES CXX)
 
-# 실행 파일
-#add_executable(point_cylinder_collision
-#    src/main.cpp
-#)
+if(NOT TARGET linearalgebra)
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../LinearAlgebra ${CMAKE_CURRENT_BINARY_DIR}/LinearAlgebra)
+endif()
 
-add_library(collision
-    src/collision.cpp
-)
+add_library(collision src/collision.cpp)
 
+target_include_directories(collision PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(collision PUBLIC linearalgebra)
+target_compile_features(collision PUBLIC cxx_std_17)
+set_target_properties(collision PROPERTIES OUTPUT_NAME collision)
 
 add_executable(collsion src/main.cpp)
-target_link_libraries(collsion PRIVATE ${CMAKE_SOURCE_DIR}/build/libcollision.a)
-target_link_libraries(collsion PRIVATE ${CMAKE_SOURCE_DIR}/build/liblinearalgebra.a)
+target_link_libraries(collsion PRIVATE collision)

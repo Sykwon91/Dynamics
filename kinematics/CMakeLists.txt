@@ -1,24 +1,17 @@
-cmake_minimum_required(VERSION 3.10)
-project(kinematics)
+cmake_minimum_required(VERSION 3.13)
 
+project(kinematics VERSION 1.0 LANGUAGES CXX)
 
+if(NOT TARGET linearalgebra)
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../LinearAlgebra ${CMAKE_CURRENT_BINARY_DIR}/LinearAlgebra)
+endif()
 
-# 라이브러리 경로
-include_directories(include)
+add_library(kinematics src/kinematics.cpp)
 
-
-add_library(kinematics
-    src/kinematics.cpp
-)
-target_link_libraries(kinematics PRIVATE ${CMAKE_SOURCE_DIR}/lib/liblinearalgebra.a)
-
+target_include_directories(kinematics PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(kinematics PUBLIC linearalgebra)
+target_compile_features(kinematics PUBLIC cxx_std_17)
+set_target_properties(kinematics PROPERTIES OUTPUT_NAME kinematics)
 
 add_executable(kinematicstest src/main.cpp)
-target_link_libraries(kinematicstest PRIVATE
-    ${CMAKE_SOURCE_DIR}/build/libkinematics.a
-    kinematics
-)
-
-
-
-target_compile_features(kinematics PRIVATE cxx_std_17)
+target_link_libraries(kinematicstest PRIVATE kinematics)

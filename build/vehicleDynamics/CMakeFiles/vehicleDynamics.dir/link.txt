@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/vehicleDynamics.dir/src/main.cpp.o -o ../bin/vehicleDynamics  ../lib/libcollision.a ../lib/libkinematics.a ../lib/liblinearalgebra.a ../lib/libterrainmechanics.a ../lib/liblinearalgebra.a 

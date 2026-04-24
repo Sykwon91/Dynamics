@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/terrainmechanicstest.dir/src/main.cpp.o -o ../bin/terrainmechanicstest  ../lib/libterrainmechanics.a ../lib/liblinearalgebra.a 

@@ -1,3 +1,0 @@
-/home/kwon/Dynamics/vehicleDynamics/build/CMakeFiles/vehicleDynamics.dir
-/home/kwon/Dynamics/vehicleDynamics/build/CMakeFiles/edit_cache.dir
-/home/kwon/Dynamics/vehicleDynamics/build/CMakeFiles/rebuild_cache.dir
