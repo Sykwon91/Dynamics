@@ -21,7 +21,7 @@ int main()
 
     //Position VehiclePosition{Vec3{0,0,3},Vec3{0,0,0}};
 
-    position Vehicle{"world", "vehicle", Vec3{-30, 300, 3}, Vec3{0, 0, 0}};
+    position Vehicle{"world", "vehicle", Vec3{-30, 100, 3}, Vec3{0, 0, 0}};
     
 
 
