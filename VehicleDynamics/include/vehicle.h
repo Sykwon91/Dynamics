@@ -21,7 +21,9 @@ class Vehicle
             position* ContactPoint = nullptr;
             motion* WheelMountMotion = nullptr;
             motion* WheelMotion = nullptr;
+            Vec3* WheelForce = nullptr;
             motion* SuspensionMotion = nullptr;
+            Vec3* SuspensionForce = nullptr;
             motion LocalVehicleMotion;
             motion* GlobalWheelMotion = nullptr;
             motion* GlobalWheelMountMotion = nullptr;
@@ -37,11 +39,18 @@ class Vehicle
             Vec3 WheelInertia{0.0, 0.0, 0.0};
             position* WheelMount = nullptr;
             position* SuspensionPosition = nullptr;
+            Vec3* SuspensionSpring = nullptr;
+            Vec3* SuspensionDamper = nullptr;
+            Vec3* WheelSpring = nullptr;
+            Vec3* WheelDamper = nullptr;
             Cylinder* Wheel = nullptr;
             Box* Chassis = nullptr;
             int TotalWheels = 0;
         };
         ODESolver odeSolver;
+        void SuspensionDynamics();
+        void WheelMountDynamcis();
+
     public:
         Vehicle(std::string filename);
         ~Vehicle();

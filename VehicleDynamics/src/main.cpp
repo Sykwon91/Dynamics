@@ -8,17 +8,14 @@ int main()
 {
     //Terrain Terrain1;
     //Terrain1.loadPLY("/home/kwon/Downloads/add_point.ply");
-    position* WheelMount = new position[4];
-    WheelMount[0] = {"vehicle", "wheel_fl_mount", Vec3{1, 1, -0.3}, Vec3{0, 0, 0}};
-    WheelMount[1] = {"vehicle", "wheel_fr_mount", Vec3{1, -1, -0.3}, Vec3{0, 0, 0}};
-    WheelMount[2] = {"vehicle", "wheel_rl_mount", Vec3{-1, 1, -0.3}, Vec3{0, 0, 0}};
-    WheelMount[3] = {"vehicle", "wheel_rr_mount", Vec3{-1, -1, -0.3}, Vec3{0, 0, 0}};
-    position* WheelPosition = new position[4];
-    WheelPosition[0] = {"wheel_fl_mount", "wheel_fl", Vec3{0, 0, 0}, Vec3{0, 0, 0}};
-    WheelPosition[1] = {"wheel_fr_mount", "wheel_fr", Vec3{0, 0, 0}, Vec3{0, 0, 0}};
-    WheelPosition[2] = {"wheel_rl_mount", "wheel_rl", Vec3{0, 0, 0}, Vec3{0, 0, 0}};
-    WheelPosition[3] = {"wheel_rr_mount", "wheel_rr", Vec3{0, 0, 0}, Vec3{0, 0, 0}};
+    Vehicle testvehicle("./vehicle_example");
 
+
+    std::cout << testvehicle.Spec.TotalWheels << std::endl;
+    std::cout << testvehicle.Spec.Mass << std::endl;
+    if (testvehicle.Spec.SuspensionPosition != nullptr)
+        std::cout << testvehicle.State.WheelMotion[3].frame_position.translation.x << std::endl;
+    else{std::cout << "null" << std::endl;}
     //Position VehiclePosition{Vec3{0,0,3},Vec3{0,0,0}};
 
     position Vehicle{"world", "vehicle", Vec3{-30, 100, 3}, Vec3{0, 0, 0}};
@@ -31,8 +28,8 @@ int main()
 
     for(int i = 0 ; i < 4 ; i++)
     {
-        GlobalWheelMountPosition[i] = Vehicle.ForwardKinematics(WheelMount[i]);
-        GlobalWheelPosition[i] = GlobalWheelMountPosition[i].ForwardKinematics(WheelPosition[i]);
+        GlobalWheelMountPosition[i] = Vehicle.ForwardKinematics(testvehicle.Spec.WheelMount[i]);
+        GlobalWheelPosition[i] = GlobalWheelMountPosition[i].ForwardKinematics(testvehicle.Spec.SuspensionPosition[i]);
     }
     
 

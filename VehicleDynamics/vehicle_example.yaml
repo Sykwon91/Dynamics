@@ -15,6 +15,16 @@ WheelInertia:
 Wheel:
   radius: 0.35
   height: 0.2
+  stiffness:
+    - {x: 0.0, y: 0.0, z: 200000.0}
+    - {x: 0.0, y: 0.0, z: 200000.0}
+    - {x: 0.0, y: 0.0, z: 200000.0}
+    - {x: 0.0, y: 0.0, z: 200000.0}
+  damping:
+    - {x: 0.0, y: 0.0, z: 1500.0}
+    - {x: 0.0, y: 0.0, z: 1500.0}
+    - {x: 0.0, y: 0.0, z: 1500.0}
+    - {x: 0.0, y: 0.0, z: 1500.0}
   center:
     translation:
       x: 0.0
@@ -37,6 +47,17 @@ Chassis:
       x: 0.0
       y: 0.0
       z: 0.0
+Suspension:
+  stiffness:
+    - {x: 0.0, y: 0.0, z: 35000.0}
+    - {x: 0.0, y: 0.0, z: 35000.0}
+    - {x: 0.0, y: 0.0, z: 42000.0}
+    - {x: 0.0, y: 0.0, z: 42000.0}
+  damping:
+    - {x: 0.0, y: 0.0, z: 3500.0}
+    - {x: 0.0, y: 0.0, z: 3500.0}
+    - {x: 0.0, y: 0.0, z: 4200.0}
+    - {x: 0.0, y: 0.0, z: 4200.0}
 WheelMount:
   - frame: vehicle
     childframe: wheel_fl_mount

@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "../bin/collsion"
   "../bin/collsion.pdb"
   "CMakeFiles/collsion.dir/src/main.cpp.o"
+  "CMakeFiles/collsion.dir/src/main.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.
