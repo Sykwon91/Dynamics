@@ -5,7 +5,7 @@ int main()
 {
     Terrain terrain1;
     terrain1.loadPLY("../Maps/1GY_roadquary.ply");
-    Vec3 test = {-2900,36,-1600};
+    Vec3 test = {-2955.21,35,-1884.32};
     std::chrono::high_resolution_clock timer11;
     std::chrono::time_point<std::chrono::high_resolution_clock> now =  timer11.now();
     terrain1.getHeightAndNormal(test);

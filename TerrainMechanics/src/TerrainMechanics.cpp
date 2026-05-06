@@ -11,11 +11,10 @@ long long TerrainMechanics::zoneIndex(double value)
 void TerrainMechanics::buildZones()
 {
     zones.clear();
-    zones.reserve(vertices.size());
 
     for (const auto& point : vertices)
     {
-        const ZoneCoord coord{zoneIndex(point.x), zoneIndex(point.y)};
+        const ZoneCoord coord{zoneIndex(point.x), zoneIndex(point.z)};
         zones[coord].push_back(HeightSample{point});
     }
 }
@@ -27,6 +26,12 @@ int TerrainMechanics::loadPLY(const std::string& filename)
     vertices.clear();
     triangles.clear();
     zones.clear();
+
+    if (!map.is_open())
+    {
+        std::cerr << "Failed to open PLY file: " << filename << std::endl;
+        return 0;
+    }
 
     while (std::getline(map,line))
     {
@@ -47,15 +52,60 @@ int TerrainMechanics::loadPLY(const std::string& filename)
         if (line == "end_header")
             break;
     }
-    for (int i = 0; i < this->num_vertices; i++) 
+
+    vertices.reserve(num_vertices);
+    triangles.reserve(num_faces);
+
+    for (int i = 0; i < this->num_vertices; i++)
     {
         Vec3 v;
-        map >> v.x >> v.y >> v.z;
+        if (!std::getline(map, line))
+        {
+            std::cerr << "Unexpected end of file while reading vertex " << i << std::endl;
+            return 0;
+        }
+
+        std::istringstream vertex_stream(line);
+        if (!(vertex_stream >> v.x >> v.y >> v.z))
+        {
+            std::cerr << "Failed to parse vertex " << i << std::endl;
+            return 0;
+        }
+
         this->vertices.push_back(v);
     }
-    for (int i = 0; i < num_faces; i++) {
+
+    for (int i = 0; i < num_faces; i++)
+    {
         int n, i0, i1, i2;
-        map >> n >> i0 >> i1 >> i2;
+        if (!std::getline(map, line))
+        {
+            std::cerr << "Unexpected end of file while reading face " << i << std::endl;
+            return 0;
+        }
+
+        std::istringstream face_stream(line);
+        if (!(face_stream >> n >> i0 >> i1 >> i2))
+        {
+            std::cerr << "Failed to parse face " << i << std::endl;
+            return 0;
+        }
+
+        if (n != 3)
+        {
+            std::cerr << "Skipping non-triangle face " << i << " with " << n << " vertices" << std::endl;
+            continue;
+        }
+
+        if (i0 < 0 || i1 < 0 || i2 < 0 ||
+            i0 >= static_cast<int>(vertices.size()) ||
+            i1 >= static_cast<int>(vertices.size()) ||
+            i2 >= static_cast<int>(vertices.size()))
+        {
+            std::cerr << "Face " << i << " has an out-of-range vertex index: "
+                      << i0 << ", " << i1 << ", " << i2 << std::endl;
+            return 0;
+        }
 
         Triangle tri;
         tri.v0 = vertices[i0];
@@ -77,6 +127,8 @@ int TerrainMechanics::loadPLY(const std::string& filename)
     }
 
     buildZones();
+
+    map.close();
     return 1;
 }
 
@@ -85,7 +137,7 @@ int TerrainMechanics::loadPLY(const std::string& filename)
 bool TerrainMechanics::getHeightAndNormal(Vec3& ObjectOrigin) {
 
     const long long center_x = zoneIndex(ObjectOrigin.x);
-    const long long center_y = zoneIndex(ObjectOrigin.y);
+    const long long center_z = zoneIndex(ObjectOrigin.z);
     const HeightSample* closest_sample = nullptr;
 
     struct Candidate
@@ -97,23 +149,16 @@ bool TerrainMechanics::getHeightAndNormal(Vec3& ObjectOrigin) {
     std::vector<Candidate> candidates;
     candidates.reserve(32);
 
-    for (long long dx = -2; dx <= 2; ++dx)
+    const ZoneCoord coord{center_x, center_z};
+    const auto zone_iter = zones.find(coord);
+    if (zone_iter != zones.end())
     {
-        for (long long dy = -2; dy <= 2; ++dy)
+        for (const auto& sample : zone_iter->second)
         {
-            const ZoneCoord coord{center_x + dx, center_y + dy};
-            const auto zone_iter = zones.find(coord);
-            if (zone_iter == zones.end())
-            {
-                continue;
-            }
-            for (const auto& sample : zone_iter->second)
-            {
-                const double diff_x = sample.position.x - ObjectOrigin.x;
-                const double diff_y = sample.position.y - ObjectOrigin.y;
-                const double distance = diff_x * diff_x + diff_y * diff_y;
-                candidates.push_back(Candidate{&sample, distance});
-            }
+            const double diff_x = sample.position.x - ObjectOrigin.x;
+            const double diff_z = sample.position.z - ObjectOrigin.z;
+            const double distance = diff_x * diff_x + diff_z * diff_z;
+            candidates.push_back(Candidate{&sample, distance});
         }
     }
 
@@ -122,12 +167,15 @@ bool TerrainMechanics::getHeightAndNormal(Vec3& ObjectOrigin) {
         return false;
     }
 
+
+
+
+
     std::sort(candidates.begin(), candidates.end(), [](const Candidate& left, const Candidate& right) {
         return left.distance < right.distance;
     });
 
     closest_sample = candidates.front().sample;
-
     if (candidates.size() >= 3)
     {
         const Vec3& p0 = candidates[0].sample->position;
@@ -141,8 +189,8 @@ bool TerrainMechanics::getHeightAndNormal(Vec3& ObjectOrigin) {
                 const Vec3& p2 = candidates[j].sample->position;
 
                 const double det =
-                    (p1.x - p0.x) * (p2.y - p0.y) -
-                    (p2.x - p0.x) * (p1.y - p0.y);
+                    (p1.x - p0.x) * (p2.z - p0.z) -
+                    (p2.x - p0.x) * (p1.z - p0.z);
 
                 if (std::fabs(det) < 1e-9)
                 {
@@ -150,30 +198,32 @@ bool TerrainMechanics::getHeightAndNormal(Vec3& ObjectOrigin) {
                 }
 
                 const double a =
-                    ((p1.z - p0.z) * (p2.y - p0.y) -
-                     (p2.z - p0.z) * (p1.y - p0.y)) / det;
+                    ((p1.y - p0.y) * (p2.z - p0.z) -
+                     (p2.y - p0.y) * (p1.z - p0.z)) / det;
                 const double b =
-                    ((p1.x - p0.x) * (p2.z - p0.z) -
-                     (p2.x - p0.x) * (p1.z - p0.z)) / det;
-                const double c = p0.z - a * p0.x - b * p0.y;
+                    ((p1.x - p0.x) * (p2.y - p0.y) -
+                     (p2.x - p0.x) * (p1.y - p0.y)) / det;
+                const double c = p0.y - a * p0.x - b * p0.z;
 
-                ObjectOrigin.z = a * ObjectOrigin.x + b * ObjectOrigin.y + c;
+                ObjectOrigin.y = a * ObjectOrigin.x + b * ObjectOrigin.z + c;
                 interpolated = true;
             }
         }
 
         if (!interpolated)
         {
-            ObjectOrigin.z = closest_sample->position.z;
+            ObjectOrigin.y = closest_sample->position.y;
         }
     }
     else
     {
-        ObjectOrigin.z = closest_sample->position.z;
+        ObjectOrigin.y = closest_sample->position.y;
     }
 
     std::cout << ObjectOrigin.x << ", "
               << ObjectOrigin.y << ", "
               << ObjectOrigin.z << std::endl;
+
+    
     return true;
 }

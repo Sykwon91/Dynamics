@@ -3,7 +3,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
-#include <unordered_map>
+#include <map>
 #include "linearalgebra.h"
 
 
@@ -20,21 +20,15 @@ class Terrain
         struct ZoneCoord
         {
             long long x;
-            long long y;
+            long long z;
 
             bool operator==(const ZoneCoord& other) const
             {
-                return x == other.x && y == other.y;
+                return x == other.x && z == other.z;
             }
-        };
-
-        struct ZoneCoordHash
-        {
-            std::size_t operator()(const ZoneCoord& coord) const
+            bool operator<(const ZoneCoord& other) const
             {
-                const auto hx = std::hash<long long>{}(coord.x);
-                const auto hy = std::hash<long long>{}(coord.y);
-                return hx ^ (hy + 0x9e3779b97f4a7c15ULL + (hx << 6) + (hx >> 2));
+                return x < other.x || (x == other.x && z < other.z);
             }
         };
 
@@ -50,7 +44,7 @@ class Terrain
         int num_faces{};
         std::vector<Vec3> vertices;
         std::vector<Triangle> triangles;
-        std::unordered_map<ZoneCoord, std::vector<HeightSample>, ZoneCoordHash> zones;
+        std::map<ZoneCoord, std::vector<HeightSample>> zones;
 
         static constexpr double zone_size = 1.0;
 
