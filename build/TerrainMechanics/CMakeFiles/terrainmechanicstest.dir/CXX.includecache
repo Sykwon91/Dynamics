@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../LinearAlgebra/include/linearalgebra.h
+cmath
+-
+
+../TerrainMechanics/include/TerrainMechanics.h
+vector
+-
+fstream
+-
+sstream
+-
+iostream
+-
+string
+-
+unordered_map
+-
+linearalgebra.h
+../TerrainMechanics/include/linearalgebra.h
+
+/home/kwon/Dynamics/TerrainMechanics/src/main.cpp
+TerrainMechanics.h
+/home/kwon/Dynamics/TerrainMechanics/src/TerrainMechanics.h
+chrono
+-
+

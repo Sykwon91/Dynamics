@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/libodesolver.a  CMakeFiles/odesolver.dir/src/ODESolver.cpp.o
+/usr/bin/ranlib ../lib/libodesolver.a

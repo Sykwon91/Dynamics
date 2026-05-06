@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Transformer/include/transformer.h
+iostream
+-
+vector
+-
+cmath
+-
+random
+-
+cassert
+-
+algorithm
+-
+
+/home/kwon/Dynamics/Transformer/src/main.cpp
+transformer.h
+/home/kwon/Dynamics/Transformer/src/transformer.h
+

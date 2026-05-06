@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/libvehicleDynamics.a  CMakeFiles/vehicleDynamics.dir/src/vehicle.cpp.o
+/usr/bin/ranlib ../lib/libvehicleDynamics.a

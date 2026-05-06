@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../LinearAlgebra/include/linearalgebra.h
+cmath
+-
+
+/home/kwon/Dynamics/LinearAlgebra/src/linearalgebra.cpp
+linearalgebra.h
+/home/kwon/Dynamics/LinearAlgebra/src/linearalgebra.h
+

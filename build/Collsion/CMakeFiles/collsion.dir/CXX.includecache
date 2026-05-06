@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Collsion/include/collision.h
+linearalgebra.h
+../Collsion/include/linearalgebra.h
+iostream
+-
+math.h
+-
+
+../LinearAlgebra/include/linearalgebra.h
+cmath
+-
+
+/home/kwon/Dynamics/Collsion/src/main.cpp
+iostream
+-
+collision.h
+/home/kwon/Dynamics/Collsion/src/collision.h
+

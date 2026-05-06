@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Kinematics/include/kinematics.h
+linearalgebra.h
+../Kinematics/include/linearalgebra.h
+string
+-
+
+../LinearAlgebra/include/linearalgebra.h
+cmath
+-
+
+/home/kwon/Dynamics/Kinematics/src/main.cpp
+kinematics.h
+/home/kwon/Dynamics/Kinematics/src/kinematics.h
+iostream
+-
+

@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Collsion/include/collision.h
+linearalgebra.h
+../Collsion/include/linearalgebra.h
+iostream
+-
+math.h
+-
+
+../LinearAlgebra/include/linearalgebra.h
+cmath
+-
+
+../Visualization/include/visualization.h
+collision.h
+../Visualization/include/collision.h
+iosfwd
+-
+string
+-
+
+/home/kwon/Dynamics/Visualization/src/visualization.cpp
+visualization.h
+/home/kwon/Dynamics/Visualization/src/visualization.h
+linearalgebra.h
+/home/kwon/Dynamics/Visualization/src/linearalgebra.h
+cmath
+-
+fstream
+-
+ostream
+-
+vector
+-
+

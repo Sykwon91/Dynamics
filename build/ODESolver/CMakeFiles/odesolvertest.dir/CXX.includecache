@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Kinematics/include/kinematics.h
+linearalgebra.h
+../Kinematics/include/linearalgebra.h
+string
+-
+
+../LinearAlgebra/include/linearalgebra.h
+cmath
+-
+
+../ODESolver/include/ODESolver.h
+iostream
+-
+string
+-
+kinematics.h
+../ODESolver/include/kinematics.h
+
+/home/kwon/Dynamics/ODESolver/src/main.cpp
+ODESolver.h
+/home/kwon/Dynamics/ODESolver/src/ODESolver.h
+
