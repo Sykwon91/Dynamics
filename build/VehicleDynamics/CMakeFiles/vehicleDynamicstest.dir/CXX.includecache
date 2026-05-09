@@ -43,7 +43,7 @@ iostream
 -
 string
 -
-unordered_map
+map
 -
 linearalgebra.h
 ../TerrainMechanics/include/linearalgebra.h
@@ -61,6 +61,12 @@ TerrainMechanics.h
 ../VehicleDynamics/include/TerrainMechanics.h
 ODESolver.h
 ../VehicleDynamics/include/ODESolver.h
+wrench.h
+../VehicleDynamics/include/wrench.h
+
+../Wrench/include/wrench.h
+linearalgebra.h
+../Wrench/include/linearalgebra.h
 
 /home/kwon/Dynamics/VehicleDynamics/src/main.cpp
 iostream

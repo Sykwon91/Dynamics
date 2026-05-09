@@ -20,6 +20,35 @@
         return { v.x * scale, v.y * scale, v.z * scale };
     }
 
+    Vec3 Vec3::operator/(double scale) const
+    {
+        return { x / scale, y / scale, z / scale };
+    }
+
+    Vec3 Vec3::operator-=(const Vec3& other)
+    {
+        x -= other.x;
+        y -= other.y;
+        z -= other.z;
+        return *this;
+    }
+
+    Vec3 Vec3::operator+=(const Vec3& other)
+    {
+        x += other.x;
+        y += other.y;
+        z += other.z;
+        return *this;
+    }
+
+    Vec3 Vec3::operator*=(double scale)
+    {
+        x *= scale;
+        y *= scale;
+        z *= scale;
+        return *this;
+    }
+
     double Vec3::dot(const Vec3& other) const
     {
         return x * other.x + y * other.y + z * other.z;

@@ -17,6 +17,7 @@ int main()
         std::cout << testvehicle.State.WheelMotion[3].frame_position.translation.x << std::endl;
     else{std::cout << "null" << std::endl;}
     //Position VehiclePosition{Vec3{0,0,3},Vec3{0,0,0}};
+    testvehicle.Update();
 
     position Vehicle{"world", "vehicle", Vec3{-30, 100, 3}, Vec3{0, 0, 0}};
     

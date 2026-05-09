@@ -13,6 +13,16 @@ struct Vec3
 
     Vec3 operator*(double scale) const;
 
+    Vec3 operator/(double scale) const;
+
+    Vec3 operator-=(const Vec3& other);
+
+    Vec3 operator+=(const Vec3& other);
+    
+    Vec3 operator*=(double scale);
+    
+    Vec3 operator/=(double scale);
+
     friend Vec3 operator*(double scale, const Vec3& v);
 
     double dot(const Vec3& other) const;

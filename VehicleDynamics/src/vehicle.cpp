@@ -81,12 +81,13 @@ static void initializeStateFromSpec(Vehicle& vehicle)
     delete[] vehicle.State.GlobalWheelMountMotion;
     delete[] vehicle.State.GlobalSuspensionMotion;
 
-    vehicle.State.ContactPoint = new position[totalWheels];
+    vehicle.State.ContactPoint = new motion[totalWheels];
+    vehicle.State.ContactWrench = new Wrench[totalWheels];
     vehicle.State.WheelMountMotion = new motion[totalWheels];
     vehicle.State.WheelMotion = new motion[totalWheels];
-    vehicle.State.WheelForce = new Vec3[totalWheels];
+    vehicle.State.WheelForce = new Wrench[totalWheels];
     vehicle.State.SuspensionMotion = new motion[totalWheels];
-    vehicle.State.SuspensionForce = new Vec3[totalWheels];
+    vehicle.State.SuspensionForce = new Wrench[totalWheels];
     vehicle.State.GlobalWheelMotion = new motion[totalWheels];
     vehicle.State.GlobalWheelMountMotion = new motion[totalWheels];
     vehicle.State.GlobalSuspensionMotion = new motion[totalWheels];
@@ -233,24 +234,6 @@ Vehicle::~Vehicle()
     delete Spec.Chassis;
 }
 
-void Vehicle::SuspensionDynamics()
-{
-    for(int wheelcnt = 0 ; wheelcnt < this->Spec.TotalWheels ; wheelcnt++)
-    {
-        if (this->Spec.SuspensionSpring == nullptr || this->State.SuspensionForce == nullptr)
-            continue;
-
-        const double displacement = this->State.WheelMountMotion[wheelcnt].frame_position.translation.z - this->State.SuspensionMotion[wheelcnt].frame_position.translation.z;
-        double damperForce = 0.0;
-        if (this->Spec.SuspensionDamper != nullptr)
-        {
-            const double relativeVelocity = this->State.WheelMountMotion[wheelcnt].frame_velocity.translation.z - this->State.SuspensionMotion[wheelcnt].frame_velocity.translation.z;
-            damperForce = this->Spec.SuspensionDamper[wheelcnt].z * relativeVelocity;
-        }
-
-        this->State.SuspensionForce[wheelcnt].z = this->Spec.SuspensionSpring[wheelcnt].z * displacement + damperForce;
-    }
-}
 
 
 void Vehicle::Update()

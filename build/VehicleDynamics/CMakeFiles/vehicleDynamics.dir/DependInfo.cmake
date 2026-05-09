@@ -1,14 +1,26 @@
-
-# Consider dependencies only in project.
-set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
-
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
   )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/kwon/Dynamics/VehicleDynamics/src/dynamics.cpp" "/home/kwon/Dynamics/build/VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/dynamics.cpp.o"
+  "/home/kwon/Dynamics/VehicleDynamics/src/suspension.cpp" "/home/kwon/Dynamics/build/VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/suspension.cpp.o"
+  "/home/kwon/Dynamics/VehicleDynamics/src/vehicle.cpp" "/home/kwon/Dynamics/build/VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/vehicle.cpp.o"
+  "/home/kwon/Dynamics/VehicleDynamics/src/wheel.cpp" "/home/kwon/Dynamics/build/VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/wheel.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The set of dependency files which are needed:
-set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/kwon/Dynamics/VehicleDynamics/src/vehicle.cpp" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/vehicle.cpp.o" "gcc" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/vehicle.cpp.o.d"
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../VehicleDynamics/include"
+  "../ODESolver/include"
+  "../LinearAlgebra/include"
+  "../Kinematics/include"
+  "../Collsion/include"
+  "../TerrainMechanics/include"
+  "../Visualization/include"
+  "../Wrench/include"
   )
 
 # Targets to which this target links.
@@ -19,6 +31,7 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/kwon/Dynamics/build/LinearAlgebra/CMakeFiles/linearalgebra.dir/DependInfo.cmake"
   "/home/kwon/Dynamics/build/TerrainMechanics/CMakeFiles/terrainmechanics.dir/DependInfo.cmake"
   "/home/kwon/Dynamics/build/Visualization/CMakeFiles/visualization.dir/DependInfo.cmake"
+  "/home/kwon/Dynamics/build/Wrench/CMakeFiles/wrench.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -26,13 +26,23 @@ if(NOT TARGET visualization)
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../Visualization ${CMAKE_CURRENT_BINARY_DIR}/Visualization)
 endif()
 
+if(NOT TARGET wrench)
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../Wrench ${CMAKE_CURRENT_BINARY_DIR}/Wrench)
+endif()
 
 find_package(yaml-cpp REQUIRED)
 
-add_library(vehicleDynamics src/vehicle.cpp)
+set(SRC_COMMON
+    src/vehicle.cpp
+    src/suspension.cpp
+    src/dynamics.cpp
+    src/wheel.cpp
+)
+
+add_library(vehicleDynamics ${SRC_COMMON})
 
 target_include_directories(vehicleDynamics PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(vehicleDynamics PUBLIC odesolver collision kinematics linearalgebra terrainmechanics visualization yaml-cpp)
+target_link_libraries(vehicleDynamics PUBLIC odesolver collision kinematics linearalgebra terrainmechanics visualization wrench yaml-cpp)
 target_compile_features(vehicleDynamics PRIVATE cxx_std_17)
 
 

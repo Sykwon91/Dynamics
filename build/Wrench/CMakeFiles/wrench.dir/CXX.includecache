@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../LinearAlgebra/include/linearalgebra.h
+cmath
+-
+
+../Wrench/include/wrench.h
+linearalgebra.h
+../Wrench/include/linearalgebra.h
+
+/home/kwon/Dynamics/Wrench/src/wrench.cpp
+wrench.h
+/home/kwon/Dynamics/Wrench/src/wrench.h
+

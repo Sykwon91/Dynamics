@@ -6,10 +6,12 @@
 #include "collision.h"
 #include "TerrainMechanics.h"
 #include "ODESolver.h"
+#include "wrench.h"
 
 class Vehicle
 {
     private:
+        
         struct input
         {
             double Throttle;
@@ -18,12 +20,14 @@ class Vehicle
         };
         struct state
         {
-            position* ContactPoint = nullptr;
+            motion* ContactPoint = nullptr;
+            Wrench* ContactWrench = nullptr;
             motion* WheelMountMotion = nullptr;
+            Wrench* WheelMountForce = nullptr;
             motion* WheelMotion = nullptr;
-            Vec3* WheelForce = nullptr;
+            Wrench* WheelForce = nullptr;
             motion* SuspensionMotion = nullptr;
-            Vec3* SuspensionForce = nullptr;
+            Wrench* SuspensionForce = nullptr;
             motion LocalVehicleMotion;
             motion* GlobalWheelMotion = nullptr;
             motion* GlobalWheelMountMotion = nullptr;
