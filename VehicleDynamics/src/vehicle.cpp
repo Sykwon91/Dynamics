@@ -239,22 +239,40 @@ Vehicle::~Vehicle()
 void Vehicle::Update()
 {
     
+    
     this->State.LocalVehicleMotion = this->State.GlobalVehicleMotion.InverseKinematics(this->State.GlobalVehicleMotion);
     
+    
+
+    this->BodyGravity();
     
     for(int wheelcnt = 0 ; wheelcnt < this->Spec.TotalWheels ; wheelcnt++)
     {
         this->State.SuspensionMotion[wheelcnt] = this->State.GlobalVehicleMotion.InverseKinematics(this->State.GlobalSuspensionMotion[wheelcnt]);
+        this->State.WheelMountMotion[wheelcnt] = this->State.GlobalVehicleMotion.InverseKinematics(this->State.GlobalWheelMountMotion[wheelcnt]);
         
         this->SuspensionDynamics();
-        /// applied force from suspension to wheel mount
+        this->WheelMountDynamcis();
+    }
+    this->ChassisDynamics();
+
+    odeSolver.solve(this->State.LocalVehicleMotion);
+    for(int wheelcnt = 0 ; wheelcnt < this->Spec.TotalWheels ; wheelcnt++)
+    {
         odeSolver.solve( this->State.WheelMountMotion[wheelcnt]);
         odeSolver.solve( this->State.WheelMotion[wheelcnt]);
-    
-        this->State.GlobalSuspensionMotion[wheelcnt] = this->State.LocalVehicleMotion.ForwardKinematics(this->State.SuspensionMotion[wheelcnt]);
     }
+    std::cout << this->State.GlobalWheelMountMotion[0].frame_acceleration.translation.z << ", " 
+    << this->State.GlobalSuspensionMotion[0].frame_acceleration.translation.z << ", " 
+    << this->State.GlobalVehicleMotion.frame_acceleration.translation.z << std::endl;
 
     this->State.GlobalVehicleMotion = this->State.GlobalVehicleMotion.ForwardKinematics(this->State.LocalVehicleMotion);
+    for(int wheelcnt = 0 ; wheelcnt < this->Spec.TotalWheels ; wheelcnt++)
+    {
+        this->State.GlobalSuspensionMotion[wheelcnt] = this->State.GlobalVehicleMotion.ForwardKinematics(this->State.SuspensionMotion[wheelcnt]);
+        this->State.GlobalWheelMountMotion[wheelcnt] = this->State.GlobalVehicleMotion.ForwardKinematics(this->State.WheelMountMotion[wheelcnt]);
+    }
+    
     // Example: update wheel mount position based on vehicle position
     // Vehicle update logic can be implemented here.
 }

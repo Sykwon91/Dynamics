@@ -37,6 +37,7 @@ set(SRC_COMMON
     src/suspension.cpp
     src/dynamics.cpp
     src/wheel.cpp
+    src/chassis.cpp
 )
 
 add_library(vehicleDynamics ${SRC_COMMON})

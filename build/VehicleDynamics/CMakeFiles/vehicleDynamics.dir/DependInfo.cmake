@@ -1,26 +1,18 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
   )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/kwon/Dynamics/VehicleDynamics/src/dynamics.cpp" "/home/kwon/Dynamics/build/VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/dynamics.cpp.o"
-  "/home/kwon/Dynamics/VehicleDynamics/src/suspension.cpp" "/home/kwon/Dynamics/build/VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/suspension.cpp.o"
-  "/home/kwon/Dynamics/VehicleDynamics/src/vehicle.cpp" "/home/kwon/Dynamics/build/VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/vehicle.cpp.o"
-  "/home/kwon/Dynamics/VehicleDynamics/src/wheel.cpp" "/home/kwon/Dynamics/build/VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/wheel.cpp.o"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../VehicleDynamics/include"
-  "../ODESolver/include"
-  "../LinearAlgebra/include"
-  "../Kinematics/include"
-  "../Collsion/include"
-  "../TerrainMechanics/include"
-  "../Visualization/include"
-  "../Wrench/include"
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/kwon/Dynamics/VehicleDynamics/src/chassis.cpp" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/chassis.cpp.o" "gcc" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/chassis.cpp.o.d"
+  "/home/kwon/Dynamics/VehicleDynamics/src/dynamics.cpp" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/dynamics.cpp.o" "gcc" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/dynamics.cpp.o.d"
+  "/home/kwon/Dynamics/VehicleDynamics/src/suspension.cpp" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/suspension.cpp.o" "gcc" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/suspension.cpp.o.d"
+  "/home/kwon/Dynamics/VehicleDynamics/src/vehicle.cpp" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/vehicle.cpp.o" "gcc" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/vehicle.cpp.o.d"
+  "/home/kwon/Dynamics/VehicleDynamics/src/wheel.cpp" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/wheel.cpp.o" "gcc" "VehicleDynamics/CMakeFiles/vehicleDynamics.dir/src/wheel.cpp.o.d"
   )
 
 # Targets to which this target links.

@@ -7,7 +7,7 @@ struct Wrench
         Vec3 Force;
         Vec3 Torque;
         Vec3 PointOfApplication;
-    private:
+    //private:
         void operator+=(const Wrench& other)
         {
             this->Force += other.Force;

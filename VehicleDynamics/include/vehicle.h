@@ -33,6 +33,9 @@ class Vehicle
             motion* GlobalWheelMountMotion = nullptr;
             motion* GlobalSuspensionMotion = nullptr;
             motion GlobalVehicleMotion;
+            Wrench GravityBodyForce;
+            Wrench* GravityWheelForce;
+            Wrench BodyForce;
         };
         struct spec
         {
@@ -54,6 +57,10 @@ class Vehicle
         ODESolver odeSolver;
         void SuspensionDynamics();
         void WheelMountDynamcis();
+        void ChassisDynamics();
+        void BodyGravity();
+        void WheelGravity();
+        Wrench ApplyForce(Wrench Force, Vec3 Point);
 
     public:
         Vehicle(std::string filename);

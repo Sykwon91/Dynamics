@@ -3,6 +3,10 @@
 
 #include <cmath>
 
+struct Vec3;
+struct Vec4;
+struct Mat3;
+
 struct Vec3
 {
     double x{0.0}, y{0.0}, z{0.0};
@@ -32,6 +36,8 @@ struct Vec3
     double norm() const;
 
     Vec3 normalized(double eps) const;
+
+    Mat3 toRotation() const;
 };
 
 
@@ -54,6 +60,8 @@ struct Vec4
     double norm() const;
 
     Vec4 normalized(double eps) const;
+
+    Mat3 toRotation() const;
 };
 
 
@@ -93,6 +101,8 @@ struct Mat3
     Mat3 operator-(const Mat3& other) const;
 
     Mat3 transpose() const;
+
+    
 };
 
 #endif // LinearAlgebra_H

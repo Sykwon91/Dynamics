@@ -217,3 +217,16 @@
                 out.mat[r][c] = mat[c][r];
         return out;
     }
+
+
+    Mat3 Vec3::toRotation() const
+    {
+       Mat3 RotMatrix[3];
+       RotMatrix[0].Rx(this->x);
+       RotMatrix[1].Ry(this->y);
+       RotMatrix[2].Rz(this->z);
+
+       Mat3 out =  RotMatrix[2] * RotMatrix[1] *  RotMatrix[0]; 
+
+       return out;
+    }
