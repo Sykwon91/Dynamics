@@ -115,17 +115,19 @@ acceleration acceleration::InverseKinematics(const acceleration& child) const
 motion motion::ForwardKinematics(const motion& child) const
 {
     motion Forward;
-    Forward.frame_position = this->frame_position.ForwardKinematics(child.frame_position);
-    Forward.frame_velocity = this->frame_velocity.ForwardKinematics(child.frame_velocity);
     Forward.frame_acceleration = this->frame_acceleration.ForwardKinematics(child.frame_acceleration);
+    Forward.frame_position = Forward.frame_acceleration.frame_velocity.frame_position;
+    Forward.frame_velocity = Forward.frame_acceleration.frame_velocity;
     return Forward;
 }
 
 motion motion::InverseKinematics(const motion& child) const
 {
     motion Inverse;
-    Inverse.frame_position = this->frame_position.InverseKinematics(child.frame_position);
-    Inverse.frame_velocity = this->frame_velocity.InverseKinematics(child.frame_velocity);
     Inverse.frame_acceleration = this->frame_acceleration.InverseKinematics(child.frame_acceleration);
+    Inverse.frame_position = Inverse.frame_acceleration.frame_velocity.frame_position;
+    Inverse.frame_velocity = Inverse.frame_acceleration.frame_velocity;
+
+
     return Inverse;
 }

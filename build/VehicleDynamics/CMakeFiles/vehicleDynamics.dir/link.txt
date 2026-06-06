@@ -1,2 +1,2 @@
-/usr/bin/ar qc ../lib/libvehicleDynamics.a CMakeFiles/vehicleDynamics.dir/src/vehicle.cpp.o CMakeFiles/vehicleDynamics.dir/src/suspension.cpp.o CMakeFiles/vehicleDynamics.dir/src/dynamics.cpp.o CMakeFiles/vehicleDynamics.dir/src/wheel.cpp.o CMakeFiles/vehicleDynamics.dir/src/chassis.cpp.o
+/usr/bin/ar qc ../lib/libvehicleDynamics.a  CMakeFiles/vehicleDynamics.dir/src/vehicle.cpp.o CMakeFiles/vehicleDynamics.dir/src/suspension.cpp.o CMakeFiles/vehicleDynamics.dir/src/dynamics.cpp.o CMakeFiles/vehicleDynamics.dir/src/wheel.cpp.o CMakeFiles/vehicleDynamics.dir/src/chassis.cpp.o
 /usr/bin/ranlib ../lib/libvehicleDynamics.a

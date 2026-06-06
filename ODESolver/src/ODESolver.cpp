@@ -33,13 +33,28 @@ void ODESolver::solve(acceleration& acceleration, velocity& velocity)
     // Implement other methods like Runge-Kutta here
 }
 
+
+void ODESolver::solve(acceleration& acceleration)
+{
+    if (ODEmethod == "Euler")
+    {
+         
+        acceleration.frame_velocity.translation = acceleration.frame_velocity.translation + acceleration.translation * dt;
+        acceleration.frame_velocity.orientation = acceleration.frame_velocity.orientation + acceleration.orientation * dt;
+        acceleration.frame_velocity.frame_position.translation = acceleration.frame_velocity.frame_position.translation + acceleration.frame_velocity.translation * dt;
+        acceleration.frame_velocity.frame_position.orientation = acceleration.frame_velocity.frame_position.orientation + acceleration.frame_velocity.orientation * dt;   
+    }
+    // Implement other methods like Runge-Kutta here
+}
+
 void ODESolver::solve(motion& motion)
 {
     if (ODEmethod == "Euler")
     {
-        solve(motion.frame_velocity, motion.frame_position);
-        solve(motion.frame_acceleration, motion.frame_velocity);
         
+        solve(motion.frame_acceleration, motion.frame_velocity);
+        solve(motion.frame_velocity, motion.frame_position);
+        //std::cout << motion.frame_position.translation.x << ", " << motion.frame_position.translation.y << ", " << motion.frame_position.translation.z << std::endl;
     }
     // Implement other methods like Runge-Kutta here
 }

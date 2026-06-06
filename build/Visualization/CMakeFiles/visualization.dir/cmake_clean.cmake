@@ -2,7 +2,6 @@ file(REMOVE_RECURSE
   "../lib/libvisualization.a"
   "../lib/libvisualization.pdb"
   "CMakeFiles/visualization.dir/src/visualization.cpp.o"
-  "CMakeFiles/visualization.dir/src/visualization.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -81,41 +81,44 @@ static void initializeStateFromSpec(Vehicle& vehicle)
     delete[] vehicle.State.GlobalWheelMountMotion;
     delete[] vehicle.State.GlobalSuspensionMotion;
 
-    vehicle.State.ContactPoint = new motion[totalWheels];
+    vehicle.State.ContactPoint = new position[totalWheels];
     vehicle.State.ContactWrench = new Wrench[totalWheels];
-    vehicle.State.WheelMountMotion = new motion[totalWheels];
-    vehicle.State.WheelMotion = new motion[totalWheels];
+    vehicle.State.WheelMountMotion = new acceleration[totalWheels];
+    vehicle.State.WheelMotion = new acceleration[totalWheels];
     vehicle.State.WheelForce = new Wrench[totalWheels];
-    vehicle.State.SuspensionMotion = new motion[totalWheels];
+    vehicle.State.SuspensionMotion = new acceleration[totalWheels];
     vehicle.State.SuspensionForce = new Wrench[totalWheels];
-    vehicle.State.GlobalWheelMotion = new motion[totalWheels];
-    vehicle.State.GlobalWheelMountMotion = new motion[totalWheels];
-    vehicle.State.GlobalSuspensionMotion = new motion[totalWheels];
+    vehicle.State.GlobalContactPoint = new position[totalWheels];
+    vehicle.State.GlobalWheelMotion = new acceleration[totalWheels];
+    vehicle.State.GlobalWheelMountMotion = new acceleration[totalWheels];
+    vehicle.State.GlobalSuspensionMotion = new acceleration[totalWheels];
+    vehicle.State.GravityWheelForce = new Wrench[totalWheels];
 
     for (int wheel = 0; wheel < totalWheels; ++wheel)
     {
         if (vehicle.Spec.WheelMount != nullptr)
         {
-            vehicle.State.WheelMountMotion[wheel].frame_position = vehicle.Spec.WheelMount[wheel];
-            vehicle.State.GlobalWheelMountMotion[wheel].frame_position =
-                vehicle.State.LocalVehicleMotion.frame_position.ForwardKinematics(vehicle.Spec.WheelMount[wheel]);
+            vehicle.State.WheelMountMotion[wheel].frame_velocity.frame_position = vehicle.Spec.WheelMount[wheel];
+            vehicle.State.GlobalWheelMountMotion[wheel].frame_velocity.frame_position =
+                vehicle.State.LocalVehicleMotion.frame_velocity.frame_position.ForwardKinematics(vehicle.Spec.WheelMount[wheel]);
+            vehicle.State.GlobalContactPoint[wheel] = vehicle.State.GlobalWheelMountMotion[wheel].frame_velocity.frame_position;
         }
 
         if (vehicle.Spec.SuspensionPosition != nullptr)
         {
-            vehicle.State.SuspensionMotion[wheel].frame_position = vehicle.Spec.SuspensionPosition[wheel];
-            vehicle.State.WheelMotion[wheel].frame_position = vehicle.Spec.SuspensionPosition[wheel];
+            vehicle.State.SuspensionMotion[wheel].frame_velocity.frame_position = vehicle.Spec.SuspensionPosition[wheel];
+            vehicle.State.WheelMotion[wheel].frame_velocity.frame_position = vehicle.Spec.SuspensionPosition[wheel];
 
             const position mountPose = vehicle.Spec.WheelMount != nullptr
-                ? vehicle.State.GlobalWheelMountMotion[wheel].frame_position
-                : vehicle.State.LocalVehicleMotion.frame_position;
+                ? vehicle.State.GlobalWheelMountMotion[wheel].frame_velocity.frame_position
+                : vehicle.State.LocalVehicleMotion.frame_velocity.frame_position;
             const position wheelPose = mountPose.ForwardKinematics(vehicle.Spec.SuspensionPosition[wheel]);
-            vehicle.State.GlobalSuspensionMotion[wheel].frame_position = wheelPose;
-            vehicle.State.GlobalWheelMotion[wheel].frame_position = wheelPose;
+            vehicle.State.GlobalSuspensionMotion[wheel].frame_velocity.frame_position = wheelPose;
+            vehicle.State.GlobalWheelMotion[wheel].frame_velocity.frame_position = wheelPose;
         }
         else if (vehicle.Spec.WheelMount != nullptr)
         {
-            vehicle.State.GlobalWheelMotion[wheel].frame_position = vehicle.State.GlobalWheelMountMotion[wheel].frame_position;
+            vehicle.State.GlobalWheelMotion[wheel].frame_velocity.frame_position = vehicle.State.GlobalWheelMountMotion[wheel].frame_velocity.frame_position;
         }
     }
 }
@@ -235,104 +238,3 @@ Vehicle::~Vehicle()
 }
 
 
-
-void Vehicle::Update()
-{
-    
-    
-    this->State.LocalVehicleMotion = this->State.GlobalVehicleMotion.InverseKinematics(this->State.GlobalVehicleMotion);
-    
-    
-
-    this->BodyGravity();
-    
-    for(int wheelcnt = 0 ; wheelcnt < this->Spec.TotalWheels ; wheelcnt++)
-    {
-        this->State.SuspensionMotion[wheelcnt] = this->State.GlobalVehicleMotion.InverseKinematics(this->State.GlobalSuspensionMotion[wheelcnt]);
-        this->State.WheelMountMotion[wheelcnt] = this->State.GlobalVehicleMotion.InverseKinematics(this->State.GlobalWheelMountMotion[wheelcnt]);
-        
-        this->SuspensionDynamics();
-        this->WheelMountDynamcis();
-    }
-    this->ChassisDynamics();
-
-    odeSolver.solve(this->State.LocalVehicleMotion);
-    for(int wheelcnt = 0 ; wheelcnt < this->Spec.TotalWheels ; wheelcnt++)
-    {
-        odeSolver.solve( this->State.WheelMountMotion[wheelcnt]);
-        odeSolver.solve( this->State.WheelMotion[wheelcnt]);
-    }
-    std::cout << this->State.GlobalWheelMountMotion[0].frame_acceleration.translation.z << ", " 
-    << this->State.GlobalSuspensionMotion[0].frame_acceleration.translation.z << ", " 
-    << this->State.GlobalVehicleMotion.frame_acceleration.translation.z << std::endl;
-
-    this->State.GlobalVehicleMotion = this->State.GlobalVehicleMotion.ForwardKinematics(this->State.LocalVehicleMotion);
-    for(int wheelcnt = 0 ; wheelcnt < this->Spec.TotalWheels ; wheelcnt++)
-    {
-        this->State.GlobalSuspensionMotion[wheelcnt] = this->State.GlobalVehicleMotion.ForwardKinematics(this->State.SuspensionMotion[wheelcnt]);
-        this->State.GlobalWheelMountMotion[wheelcnt] = this->State.GlobalVehicleMotion.ForwardKinematics(this->State.WheelMountMotion[wheelcnt]);
-    }
-    
-    // Example: update wheel mount position based on vehicle position
-    // Vehicle update logic can be implemented here.
-}
-
-bool Vehicle::Visualize(const std::string& filename) const
-{
-    std::ofstream file(filename);
-    if (!file)
-        return false;
-
-    Visualization::ObjWriter writer(file);
-
-    const position& vehiclePose = State.LocalVehicleMotion.frame_position;
-    if (Spec.Chassis != nullptr)
-    {
-        Box chassis = *Spec.Chassis;
-        position chassisLocal;
-        chassisLocal.translation = chassis.Center.translation;
-        chassisLocal.orientation = chassis.Center.rotation;
-
-        const position chassisGlobal = vehiclePose.ForwardKinematics(chassisLocal);
-        chassis.Center.translation = chassisGlobal.translation;
-        chassis.Center.rotation = chassisGlobal.orientation;
-        writer.writeBox("chassis", chassis);
-    }
-
-    if (Spec.Wheel == nullptr)
-        return true;
-
-    for (int wheel = 0; wheel < Spec.TotalWheels; ++wheel)
-    {
-        Cylinder wheelShape = *Spec.Wheel;
-        position wheelPose;
-
-        if (State.GlobalWheelMotion != nullptr)
-        {
-            wheelPose = State.GlobalWheelMotion[wheel].frame_position;
-        }
-        else if (Spec.WheelMount != nullptr && Spec.SuspensionPosition != nullptr)
-        {
-            wheelPose = vehiclePose.ForwardKinematics(Spec.WheelMount[wheel]).ForwardKinematics(Spec.SuspensionPosition[wheel]);
-        }
-        else if (Spec.WheelMount != nullptr)
-        {
-            wheelPose = vehiclePose.ForwardKinematics(Spec.WheelMount[wheel]);
-        }
-        else
-        {
-            wheelPose = vehiclePose;
-        }
-
-        position wheelCenter;
-        wheelCenter.translation = wheelShape.Center.translation;
-        wheelCenter.orientation = wheelShape.Center.rotation;
-        wheelPose = wheelPose.ForwardKinematics(wheelCenter);
-
-        wheelShape.Center.translation = wheelPose.translation;
-        wheelShape.Center.rotation = wheelPose.orientation;
-        writer.writeCylinder("wheel_" + std::to_string(wheel), wheelShape);
-    }
-
-    return true;
-}

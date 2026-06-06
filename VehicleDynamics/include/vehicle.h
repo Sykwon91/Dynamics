@@ -20,19 +20,20 @@ class Vehicle
         };
         struct state
         {
-            motion* ContactPoint = nullptr;
+            position* ContactPoint = nullptr;
             Wrench* ContactWrench = nullptr;
-            motion* WheelMountMotion = nullptr;
+            acceleration* WheelMountMotion = nullptr;
             Wrench* WheelMountForce = nullptr;
-            motion* WheelMotion = nullptr;
+            acceleration* WheelMotion = nullptr;
             Wrench* WheelForce = nullptr;
-            motion* SuspensionMotion = nullptr;
+            acceleration* SuspensionMotion = nullptr;
             Wrench* SuspensionForce = nullptr;
-            motion LocalVehicleMotion;
-            motion* GlobalWheelMotion = nullptr;
-            motion* GlobalWheelMountMotion = nullptr;
-            motion* GlobalSuspensionMotion = nullptr;
-            motion GlobalVehicleMotion;
+            acceleration LocalVehicleMotion;
+            position* GlobalContactPoint = nullptr;
+            acceleration* GlobalWheelMotion = nullptr;
+            acceleration* GlobalWheelMountMotion = nullptr;
+            acceleration* GlobalSuspensionMotion = nullptr;
+            acceleration GlobalVehicleMotion;
             Wrench GravityBodyForce;
             Wrench* GravityWheelForce;
             Wrench BodyForce;

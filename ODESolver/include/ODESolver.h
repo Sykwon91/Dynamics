@@ -13,6 +13,7 @@ class ODESolver {
         void solve(velocity& velocity, position& position);
         void solve(acceleration& acceleration, velocity& velocity);
         void solve(motion& motion);
+        void solve(acceleration& acceleration);
 
     private:
         std::string ODEmethod;

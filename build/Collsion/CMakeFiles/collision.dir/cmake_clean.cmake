@@ -2,7 +2,6 @@ file(REMOVE_RECURSE
   "../lib/libcollision.a"
   "../lib/libcollision.pdb"
   "CMakeFiles/collision.dir/src/collision.cpp.o"
-  "CMakeFiles/collision.dir/src/collision.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

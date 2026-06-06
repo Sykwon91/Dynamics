@@ -68,7 +68,7 @@ wrench.h
 linearalgebra.h
 ../Wrench/include/linearalgebra.h
 
-/home/kwon/Dynamics/VehicleDynamics/src/suspension.cpp
+/home/kwon/Dynamics/VehicleDynamics/src/dynamics.cpp
 vehicle.h
 /home/kwon/Dynamics/VehicleDynamics/src/vehicle.h
 
