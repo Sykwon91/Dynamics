@@ -1,0 +1,102 @@
+[
+{
+  "directory": "/home/kwon/Dynamics/build/LinearAlgebra",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/LinearAlgebra/include -g -std=c++17 -o CMakeFiles/linearalgebra.dir/src/linearalgebra.cpp.o -c /home/kwon/Dynamics/LinearAlgebra/src/linearalgebra.cpp",
+  "file": "/home/kwon/Dynamics/LinearAlgebra/src/linearalgebra.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/LinearAlgebra",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/LinearAlgebra/include -g -std=c++17 -o CMakeFiles/linearalgebratest.dir/src/main.cpp.o -c /home/kwon/Dynamics/LinearAlgebra/src/main.cpp",
+  "file": "/home/kwon/Dynamics/LinearAlgebra/src/main.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/Kinematics",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/Kinematics/include -I/home/kwon/Dynamics/LinearAlgebra/include -g -std=c++17 -o CMakeFiles/kinematics.dir/src/kinematics.cpp.o -c /home/kwon/Dynamics/Kinematics/src/kinematics.cpp",
+  "file": "/home/kwon/Dynamics/Kinematics/src/kinematics.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/Kinematics",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/Kinematics/include -I/home/kwon/Dynamics/LinearAlgebra/include -g -std=c++17 -o CMakeFiles/kinematicstest.dir/src/main.cpp.o -c /home/kwon/Dynamics/Kinematics/src/main.cpp",
+  "file": "/home/kwon/Dynamics/Kinematics/src/main.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/Collsion",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/Collsion/include -I/home/kwon/Dynamics/LinearAlgebra/include -g -std=c++17 -o CMakeFiles/collision.dir/src/collision.cpp.o -c /home/kwon/Dynamics/Collsion/src/collision.cpp",
+  "file": "/home/kwon/Dynamics/Collsion/src/collision.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/Collsion",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/Collsion/include -I/home/kwon/Dynamics/LinearAlgebra/include -g -std=c++17 -o CMakeFiles/collsion.dir/src/main.cpp.o -c /home/kwon/Dynamics/Collsion/src/main.cpp",
+  "file": "/home/kwon/Dynamics/Collsion/src/main.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/Transformer",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/Transformer/include -g -std=c++17 -o CMakeFiles/transformer.dir/src/transformer.cpp.o -c /home/kwon/Dynamics/Transformer/src/transformer.cpp",
+  "file": "/home/kwon/Dynamics/Transformer/src/transformer.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/Transformer",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/Transformer/include -g -std=c++17 -o CMakeFiles/transformertest.dir/src/main.cpp.o -c /home/kwon/Dynamics/Transformer/src/main.cpp",
+  "file": "/home/kwon/Dynamics/Transformer/src/main.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/TerrainMechanics",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/TerrainMechanics/include -I/home/kwon/Dynamics/LinearAlgebra/include -g -std=c++17 -o CMakeFiles/terrainmechanics.dir/src/TerrainMechanics.cpp.o -c /home/kwon/Dynamics/TerrainMechanics/src/TerrainMechanics.cpp",
+  "file": "/home/kwon/Dynamics/TerrainMechanics/src/TerrainMechanics.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/TerrainMechanics",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/TerrainMechanics/include -I/home/kwon/Dynamics/LinearAlgebra/include -g -std=c++17 -o CMakeFiles/terrainmechanicstest.dir/src/main.cpp.o -c /home/kwon/Dynamics/TerrainMechanics/src/main.cpp",
+  "file": "/home/kwon/Dynamics/TerrainMechanics/src/main.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/ODESolver",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/ODESolver/include -I/home/kwon/Dynamics/LinearAlgebra/include -I/home/kwon/Dynamics/Kinematics/include -g -std=c++17 -o CMakeFiles/odesolver.dir/src/ODESolver.cpp.o -c /home/kwon/Dynamics/ODESolver/src/ODESolver.cpp",
+  "file": "/home/kwon/Dynamics/ODESolver/src/ODESolver.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/ODESolver",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/ODESolver/include -I/home/kwon/Dynamics/LinearAlgebra/include -I/home/kwon/Dynamics/Kinematics/include -g -std=c++17 -o CMakeFiles/odesolvertest.dir/src/main.cpp.o -c /home/kwon/Dynamics/ODESolver/src/main.cpp",
+  "file": "/home/kwon/Dynamics/ODESolver/src/main.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/Visualization",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/Visualization/include -I/home/kwon/Dynamics/Collsion/include -I/home/kwon/Dynamics/LinearAlgebra/include -g -std=c++17 -o CMakeFiles/visualization.dir/src/visualization.cpp.o -c /home/kwon/Dynamics/Visualization/src/visualization.cpp",
+  "file": "/home/kwon/Dynamics/Visualization/src/visualization.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/Wrench",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/Wrench/include -I/home/kwon/Dynamics/LinearAlgebra/include -g -std=c++17 -o CMakeFiles/wrench.dir/src/wrench.cpp.o -c /home/kwon/Dynamics/Wrench/src/wrench.cpp",
+  "file": "/home/kwon/Dynamics/Wrench/src/wrench.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/VehicleDynamics",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/VehicleDynamics/include -I/home/kwon/Dynamics/ODESolver/include -I/home/kwon/Dynamics/LinearAlgebra/include -I/home/kwon/Dynamics/Kinematics/include -I/home/kwon/Dynamics/Collsion/include -I/home/kwon/Dynamics/TerrainMechanics/include -I/home/kwon/Dynamics/Visualization/include -I/home/kwon/Dynamics/Wrench/include -g -std=c++17 -o CMakeFiles/vehicleDynamics.dir/src/vehicle.cpp.o -c /home/kwon/Dynamics/VehicleDynamics/src/vehicle.cpp",
+  "file": "/home/kwon/Dynamics/VehicleDynamics/src/vehicle.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/VehicleDynamics",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/VehicleDynamics/include -I/home/kwon/Dynamics/ODESolver/include -I/home/kwon/Dynamics/LinearAlgebra/include -I/home/kwon/Dynamics/Kinematics/include -I/home/kwon/Dynamics/Collsion/include -I/home/kwon/Dynamics/TerrainMechanics/include -I/home/kwon/Dynamics/Visualization/include -I/home/kwon/Dynamics/Wrench/include -g -std=c++17 -o CMakeFiles/vehicleDynamics.dir/src/suspension.cpp.o -c /home/kwon/Dynamics/VehicleDynamics/src/suspension.cpp",
+  "file": "/home/kwon/Dynamics/VehicleDynamics/src/suspension.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/VehicleDynamics",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/VehicleDynamics/include -I/home/kwon/Dynamics/ODESolver/include -I/home/kwon/Dynamics/LinearAlgebra/include -I/home/kwon/Dynamics/Kinematics/include -I/home/kwon/Dynamics/Collsion/include -I/home/kwon/Dynamics/TerrainMechanics/include -I/home/kwon/Dynamics/Visualization/include -I/home/kwon/Dynamics/Wrench/include -g -std=c++17 -o CMakeFiles/vehicleDynamics.dir/src/dynamics.cpp.o -c /home/kwon/Dynamics/VehicleDynamics/src/dynamics.cpp",
+  "file": "/home/kwon/Dynamics/VehicleDynamics/src/dynamics.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/VehicleDynamics",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/VehicleDynamics/include -I/home/kwon/Dynamics/ODESolver/include -I/home/kwon/Dynamics/LinearAlgebra/include -I/home/kwon/Dynamics/Kinematics/include -I/home/kwon/Dynamics/Collsion/include -I/home/kwon/Dynamics/TerrainMechanics/include -I/home/kwon/Dynamics/Visualization/include -I/home/kwon/Dynamics/Wrench/include -g -std=c++17 -o CMakeFiles/vehicleDynamics.dir/src/wheel.cpp.o -c /home/kwon/Dynamics/VehicleDynamics/src/wheel.cpp",
+  "file": "/home/kwon/Dynamics/VehicleDynamics/src/wheel.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/VehicleDynamics",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/VehicleDynamics/include -I/home/kwon/Dynamics/ODESolver/include -I/home/kwon/Dynamics/LinearAlgebra/include -I/home/kwon/Dynamics/Kinematics/include -I/home/kwon/Dynamics/Collsion/include -I/home/kwon/Dynamics/TerrainMechanics/include -I/home/kwon/Dynamics/Visualization/include -I/home/kwon/Dynamics/Wrench/include -g -std=c++17 -o CMakeFiles/vehicleDynamics.dir/src/chassis.cpp.o -c /home/kwon/Dynamics/VehicleDynamics/src/chassis.cpp",
+  "file": "/home/kwon/Dynamics/VehicleDynamics/src/chassis.cpp"
+},
+{
+  "directory": "/home/kwon/Dynamics/build/VehicleDynamics",
+  "command": "/usr/bin/c++  -I/home/kwon/Dynamics/VehicleDynamics/include -I/home/kwon/Dynamics/ODESolver/include -I/home/kwon/Dynamics/LinearAlgebra/include -I/home/kwon/Dynamics/Kinematics/include -I/home/kwon/Dynamics/Collsion/include -I/home/kwon/Dynamics/TerrainMechanics/include -I/home/kwon/Dynamics/Visualization/include -I/home/kwon/Dynamics/Wrench/include -g -std=c++17 -o CMakeFiles/vehicleDynamicstest.dir/src/main.cpp.o -c /home/kwon/Dynamics/VehicleDynamics/src/main.cpp",
+  "file": "/home/kwon/Dynamics/VehicleDynamics/src/main.cpp"
+}
+]

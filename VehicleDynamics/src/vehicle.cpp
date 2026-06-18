@@ -112,7 +112,7 @@ static void initializeStateFromSpec(Vehicle& vehicle)
             const position mountPose = vehicle.Spec.WheelMount != nullptr
                 ? vehicle.State.GlobalWheelMountMotion[wheel].frame_velocity.frame_position
                 : vehicle.State.LocalVehicleMotion.frame_velocity.frame_position;
-            const position wheelPose = mountPose.ForwardKinematics(vehicle.Spec.SuspensionPosition[wheel]);
+            const position wheelPose = vehicle.State.GlobalVehicleMotion.frame_velocity.frame_position.ForwardKinematics(vehicle.Spec.SuspensionPosition[wheel]);
             vehicle.State.GlobalSuspensionMotion[wheel].frame_velocity.frame_position = wheelPose;
             vehicle.State.GlobalWheelMotion[wheel].frame_velocity.frame_position = wheelPose;
         }

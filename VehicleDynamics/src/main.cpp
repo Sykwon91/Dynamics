@@ -14,13 +14,15 @@ int main()
     std::cout << testvehicle.Spec.TotalWheels << std::endl;
     std::cout << testvehicle.Spec.Mass << std::endl;
     if (testvehicle.Spec.SuspensionPosition != nullptr)
-        std::cout << testvehicle.State.WheelMotion[3].frame_velocity.frame_position.translation.x << std::endl;
+        std::cout << testvehicle.State.WheelMotion[3].frame_velocity.frame_position.translation.z << std::endl;
     else{std::cout << "null" << std::endl;}
     //Position VehiclePosition{Vec3{0,0,3},Vec3{0,0,0}};
     for(int ii = 0 ; ii < 20000 ; ii++)
     {
         testvehicle.Update();
-        if(ii % 100 == 0)    std::cout << "vehicle pos : " << testvehicle.State.GlobalVehicleMotion.frame_velocity.frame_position.translation.x << ", " << testvehicle.State.GlobalVehicleMotion.frame_velocity.frame_position.translation.y << ", " << testvehicle.State.GlobalVehicleMotion.translation.z << std::endl;
+        if(ii % 10 == 0)    std::cout << "vehicle pos : " << testvehicle.State.GlobalVehicleMotion.frame_velocity.frame_position.translation.x << ", " << testvehicle.State.GlobalVehicleMotion.frame_velocity.frame_position.translation.y << ", " << testvehicle.State.GlobalVehicleMotion.translation.z << ", " << testvehicle.State.GlobalVehicleMotion.frame_velocity.frame_position.orientation.x << ", " << testvehicle.State.GlobalVehicleMotion.frame_velocity.frame_position.orientation.y << ", " << testvehicle.State.GlobalVehicleMotion.orientation.z << std::endl;
+        //if(ii % 100 == 0)     std::cout << "wheel pos : " << testvehicle.State.GlobalSuspensionMotion[3].frame_velocity.frame_position.translation.x << ", " << testvehicle.State.GlobalSuspensionMotion[2].frame_velocity.frame_position.translation.y << ", " << testvehicle.State.GlobalSuspensionMotion[].frame_velocity.frame_position.translation.z << std::endl;
+        //std::cout << testvehicle.State.GlobalWheelMotion[3].frame_velocity.frame_position.translation.z << std::endl;
     }
     
 

@@ -29,6 +29,7 @@ int main()
     std::cout << inv_a_xy.translation.x << std::endl;
     std::cout << inv_a_xy.translation.y << std::endl;
     std::cout << inv_a_xy.translation.z << std::endl;
+    std::cout << inv_a_xy.orientation.z << std::endl;
 
     return 0;
 }

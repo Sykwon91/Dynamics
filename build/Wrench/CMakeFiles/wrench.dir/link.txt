@@ -1,2 +1,2 @@
-/usr/bin/ar qc ../lib/libwrench.a  CMakeFiles/wrench.dir/src/wrench.cpp.o
+/usr/bin/ar qc ../lib/libwrench.a CMakeFiles/wrench.dir/src/wrench.cpp.o
 /usr/bin/ranlib ../lib/libwrench.a

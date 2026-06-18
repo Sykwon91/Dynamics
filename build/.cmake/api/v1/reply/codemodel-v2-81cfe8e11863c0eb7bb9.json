@@ -1,0 +1,438 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "LinearAlgebra",
+					"jsonFile" : "directory-LinearAlgebra-Debug-063e86e315ba67e7861c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "LinearAlgebra",
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				},
+				{
+					"build" : "Kinematics",
+					"jsonFile" : "directory-Kinematics-Debug-9f6e7f65871007ce84d5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "Kinematics",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				},
+				{
+					"build" : "Collsion",
+					"jsonFile" : "directory-Collsion-Debug-0fb0cdebbb3c3ba5ea1c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "Collsion",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "Transformer",
+					"jsonFile" : "directory-Transformer-Debug-a70a5a303b54adfbb288.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "Transformer",
+					"targetIndexes" : 
+					[
+						10,
+						11
+					]
+				},
+				{
+					"build" : "TerrainMechanics",
+					"jsonFile" : "directory-TerrainMechanics-Debug-40cee021d1008261c254.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 5,
+					"source" : "TerrainMechanics",
+					"targetIndexes" : 
+					[
+						8,
+						9
+					]
+				},
+				{
+					"build" : "ODESolver",
+					"jsonFile" : "directory-ODESolver-Debug-8ae475915ed942bcfac3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 6,
+					"source" : "ODESolver",
+					"targetIndexes" : 
+					[
+						6,
+						7
+					]
+				},
+				{
+					"build" : "Visualization",
+					"jsonFile" : "directory-Visualization-Debug-31c859a350af948b1845.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 7,
+					"source" : "Visualization",
+					"targetIndexes" : 
+					[
+						14
+					]
+				},
+				{
+					"build" : "Wrench",
+					"jsonFile" : "directory-Wrench-Debug-b15c843ec5cdeb36f554.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 8,
+					"source" : "Wrench",
+					"targetIndexes" : 
+					[
+						15
+					]
+				},
+				{
+					"build" : "VehicleDynamics",
+					"jsonFile" : "directory-VehicleDynamics-Debug-2d8bd500fb0cbeb90f20.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 9,
+					"source" : "VehicleDynamics",
+					"targetIndexes" : 
+					[
+						12,
+						13
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Dynamics"
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "linearalgebra",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "kinematics",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "collision_module",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "transformer",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						10,
+						11
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "terrainmechanics",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						8,
+						9
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						6
+					],
+					"name" : "odesolver",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6,
+						7
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "visualization",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						14
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "wrench",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						15
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						9
+					],
+					"name" : "vehicleDynamics",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						12,
+						13
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 3,
+					"id" : "collision::@3875e671a930d7485b50",
+					"jsonFile" : "target-collision-Debug-761fbde924c44fea7f60.json",
+					"name" : "collision",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "collsion::@3875e671a930d7485b50",
+					"jsonFile" : "target-collsion-Debug-9101a001be3ac3bffe2c.json",
+					"name" : "collsion",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "kinematics::@f8ea6bd2d78fdfbc7250",
+					"jsonFile" : "target-kinematics-Debug-43dc342b5d83622d8c57.json",
+					"name" : "kinematics",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "kinematicstest::@f8ea6bd2d78fdfbc7250",
+					"jsonFile" : "target-kinematicstest-Debug-db3ee7a9d9c93ae3c852.json",
+					"name" : "kinematicstest",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "linearalgebra::@26bb42279006f4008351",
+					"jsonFile" : "target-linearalgebra-Debug-dc2e0f3baa05b0c434a8.json",
+					"name" : "linearalgebra",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "linearalgebratest::@26bb42279006f4008351",
+					"jsonFile" : "target-linearalgebratest-Debug-7eb4aa019de9a396d4d6.json",
+					"name" : "linearalgebratest",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "odesolver::@7544af8df82455fc2777",
+					"jsonFile" : "target-odesolver-Debug-13cb28404ca55df8aa6c.json",
+					"name" : "odesolver",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "odesolvertest::@7544af8df82455fc2777",
+					"jsonFile" : "target-odesolvertest-Debug-97b92067d9202550d5b2.json",
+					"name" : "odesolvertest",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "terrainmechanics::@e423927edefb27b3c4fb",
+					"jsonFile" : "target-terrainmechanics-Debug-e342eb9ccbd0dbc95b8f.json",
+					"name" : "terrainmechanics",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "terrainmechanicstest::@e423927edefb27b3c4fb",
+					"jsonFile" : "target-terrainmechanicstest-Debug-0b1375a19edfa614365b.json",
+					"name" : "terrainmechanicstest",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "transformer::@c8af2a79f30b3bf2e279",
+					"jsonFile" : "target-transformer-Debug-4898befe1d8ea94707e2.json",
+					"name" : "transformer",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "transformertest::@c8af2a79f30b3bf2e279",
+					"jsonFile" : "target-transformertest-Debug-8978de75302703eb05ea.json",
+					"name" : "transformertest",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "vehicleDynamics::@d2c06300bc238e278dcf",
+					"jsonFile" : "target-vehicleDynamics-Debug-440f9ae572aa475bfd65.json",
+					"name" : "vehicleDynamics",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "vehicleDynamicstest::@d2c06300bc238e278dcf",
+					"jsonFile" : "target-vehicleDynamicstest-Debug-3177929753a6b20f0075.json",
+					"name" : "vehicleDynamicstest",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "visualization::@aacf4891b401c2a8313c",
+					"jsonFile" : "target-visualization-Debug-3dd62ecdd3c102e60224.json",
+					"name" : "visualization",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "wrench::@c1a457b9c0b897d550db",
+					"jsonFile" : "target-wrench-Debug-cdb28ef0e09b4842686e.json",
+					"name" : "wrench",
+					"projectIndex" : 8
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/kwon/Dynamics/build",
+		"source" : "/home/kwon/Dynamics"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

@@ -16,8 +16,9 @@ void Vehicle::WheelMountDynamcis()
         }
 
         this->State.WheelForce[wheelcnt].Force.z = this->Spec.WheelSpring[wheelcnt].z * displacement + damperForce + this->Spec.WheelMass * 9.80665  + this->Spec.Mass * 9.80665 / this->Spec.TotalWheels;
-        this->State.WheelMountMotion[wheelcnt].translation.z = (this->State.WheelForce[wheelcnt].Force.z  - this->State.SuspensionForce[wheelcnt].Force.z ) / this->Spec.WheelMass;
+        this->State.WheelMountMotion[wheelcnt].translation.z = (this->State.WheelForce[wheelcnt].Force.z + this->State.GravityWheelForce[wheelcnt].Force.z - this->State.SuspensionForce[wheelcnt].Force.z ) / this->Spec.WheelMass;
     }
+    //std::cout << "wheel Mount Motion acc : " << this->State.WheelMountMotion[0].frame_velocity.frame_position.translation.z << std::endl;
     //std::cout << "wheel Mount Motion acc : " << this->State.WheelMountMotion[0].frame_acceleration.translation.x << ", " << this->State.WheelMountMotion[0].frame_acceleration.translation.y << ", " << this->State.WheelMountMotion[0].frame_acceleration.translation.z << std::endl;
 
 }

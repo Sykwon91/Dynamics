@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/odesolvertest.dir/src/main.cpp.o  -o ../bin/odesolvertest  ../lib/libodesolver.a ../lib/libkinematics.a ../lib/liblinearalgebra.a 
+/usr/bin/c++ -g CMakeFiles/odesolvertest.dir/src/main.cpp.o -o ../bin/odesolvertest  ../lib/libodesolver.a ../lib/libkinematics.a ../lib/liblinearalgebra.a 

@@ -21,7 +21,7 @@ void Vehicle::ChassisDynamics()
 void Vehicle::BodyGravity()
 {
     Vec3 Gravity{0,0,-9.80665};
-    this->State.GravityBodyForce.Force = this->State.GlobalVehicleMotion.frame_velocity.frame_position.orientation.toRotation() * (this->Spec.Mass * Gravity);
+    this->State.GravityBodyForce.Force = this->State.GlobalVehicleMotion.frame_velocity.frame_position.orientation.toRotation().transpose() * (this->Spec.Mass * Gravity);
 
 
     //std::cout << "gravity :"

@@ -38,6 +38,7 @@ position position::InverseKinematics(const position& child) const
     //if(this->frame == child.frame) return this;
     position Inverse;
     Inverse.frame = this->childframe;
+    Inverse.childframe = child.childframe;
     Inverse.translation =   this->toRotationMatrix().transpose() * (child.translation - this->translation);
     Inverse.orientation = (this->toRotationMatrix().transpose() * child.toRotationMatrix()).toEuler();
     return Inverse;
@@ -103,7 +104,11 @@ acceleration acceleration::InverseKinematics(const acceleration& child) const
 {
     acceleration Inverse;
     Inverse.frame_velocity = this->frame_velocity.InverseKinematics(child.frame_velocity);
-    Inverse.orientation = (this->frame_velocity.frame_position.toRotationMatrix().transpose() * (child.toAngularAccelerationSkew() - this ->toAngularAccelerationSkew()) * this->frame_velocity.frame_position.toRotationMatrix().transpose()).toDotEuler();
+    Inverse.orientation = (
+                            this->frame_velocity.frame_position.toRotationMatrix().transpose() * (child.toAngularAccelerationSkew() - this ->toAngularAccelerationSkew()) * this->frame_velocity.frame_position.toRotationMatrix()
+                            + this->frame_velocity.frame_position.toRotationMatrix().transpose() * this->frame_velocity.toAngularVelocitySkew().transpose() * (child.frame_velocity.toAngularVelocitySkew() - this ->frame_velocity.toAngularVelocitySkew()) * this->frame_velocity.frame_position.toRotationMatrix()
+                            + this->frame_velocity.frame_position.toRotationMatrix().transpose() * (child.frame_velocity.toAngularVelocitySkew() - this ->frame_velocity.toAngularVelocitySkew()) *this ->frame_velocity.toAngularVelocitySkew() * this->frame_velocity.frame_position.toRotationMatrix()
+                          ).toDotEuler();
     Inverse.translation = this->frame_velocity.frame_position.toRotationMatrix().transpose() * (child.translation -  this->translation 
                         - this->frame_velocity.toAngularVelocitySkew() * this->frame_velocity.toAngularVelocitySkew() * this->frame_velocity.frame_position.toRotationMatrix() * Inverse.frame_velocity.frame_position.translation
                         - this->toAngularAccelerationSkew() * this->frame_velocity.frame_position.toRotationMatrix() * Inverse.frame_velocity.frame_position.translation

@@ -23,12 +23,12 @@ Wheel:
     - {x: 0.0, y: 0.0, z: 200000.0}
     - {x: 0.0, y: 0.0, z: 200000.0}
   damping:
-    - {x: 0.0, y: 0.0, z: 1500.0}
-    - {x: 0.0, y: 0.0, z: 1500.0}
-    - {x: 0.0, y: 0.0, z: 1500.0}
-    - {x: 0.0, y: 0.0, z: 1500.0}
-    - {x: 0.0, y: 0.0, z: 1500.0}
-    - {x: 0.0, y: 0.0, z: 1500.0}
+    - {x: 0.0, y: 0.0, z: 0.0}
+    - {x: 0.0, y: 0.0, z: 0.0}
+    - {x: 0.0, y: 0.0, z: 0.0}
+    - {x: 0.0, y: 0.0, z: 0.0}
+    - {x: 0.0, y: 0.0, z: 0.0}
+    - {x: 0.0, y: 0.0, z: 0.0}
   center:
     translation:
       x: 0.0
@@ -53,19 +53,19 @@ Chassis:
       z: 0.0
 Suspension:
   stiffness:
-    - {x: 0.0, y: 0.0, z: 22000.0}
-    - {x: 0.0, y: 0.0, z: 22000.0}
-    - {x: 0.0, y: 0.0, z: 22000.0}
-    - {x: 0.0, y: 0.0, z: 22000.0}
-    - {x: 0.0, y: 0.0, z: 22000.0}
-    - {x: 0.0, y: 0.0, z: 22000.0}
+    - {x: 0.0, y: 0.0, z: 20000.0}
+    - {x: 0.0, y: 0.0, z: 20000.0}
+    - {x: 0.0, y: 0.0, z: 20000.0}
+    - {x: 0.0, y: 0.0, z: 20000.0}
+    - {x: 0.0, y: 0.0, z: 20000.0}
+    - {x: 0.0, y: 0.0, z: 20000.0}
   damping:
-    - {x: 0.0, y: 0.0, z: 2200.0}
-    - {x: 0.0, y: 0.0, z: 2200.0}
-    - {x: 0.0, y: 0.0, z: 2200.0}
-    - {x: 0.0, y: 0.0, z: 2200.0}
-    - {x: 0.0, y: 0.0, z: 2200.0}
-    - {x: 0.0, y: 0.0, z: 2200.0}
+    - {x: 0.0, y: 0.0, z: 1200.0}
+    - {x: 0.0, y: 0.0, z: 1200.0}
+    - {x: 0.0, y: 0.0, z: 1200.0}
+    - {x: 0.0, y: 0.0, z: 1200.0}
+    - {x: 0.0, y: 0.0, z: 1200.0}
+    - {x: 0.0, y: 0.0, z: 1200.0}
 WheelMount:
   - frame: vehicle
     childframe: wheel_fl_mount
@@ -90,7 +90,7 @@ WheelMount:
   - frame: vehicle
     childframe: wheel_ml_mount
     translation:
-      x: -0.0
+      x: 0.0
       y: 1.0
       z: -0.3
     orientation:
@@ -100,7 +100,7 @@ WheelMount:
   - frame: vehicle
     childframe: wheel_mr_mount
     translation:
-      x: -0.0
+      x: 0.0
       y: -1.0
       z: -0.3
     orientation:
@@ -131,9 +131,9 @@ SuspensionPosition:
   - frame: wheel_fl_mount
     childframe: wheel_fl
     translation:
-      x: 0.0
-      y: 0.0
-      z: 0.0
+      x: 1.0
+      y: 1.0
+      z: -0.3
     orientation:
       x: 0.0
       y: 0.0
@@ -141,9 +141,9 @@ SuspensionPosition:
   - frame: wheel_fr_mount
     childframe: wheel_fr
     translation:
-      x: 0.0
-      y: 0.0
-      z: 0.0
+      x: 1.0
+      y: -1.0
+      z: -0.3
     orientation:
       x: 0.0
       y: 0.0
@@ -152,8 +152,8 @@ SuspensionPosition:
     childframe: wheel_ml
     translation:
       x: 0.0
-      y: 0.0
-      z: 0.0
+      y: 1.0
+      z: -0.3
     orientation:
       x: 0.0
       y: 0.0
@@ -162,8 +162,8 @@ SuspensionPosition:
     childframe: wheel_mr
     translation:
       x: 0.0
-      y: 0.0
-      z: 0.0
+      y: -1.0
+      z: -0.3
     orientation:
       x: 0.0
       y: 0.0
@@ -171,9 +171,9 @@ SuspensionPosition:
   - frame: wheel_rl_mount
     childframe: wheel_rl
     translation:
-      x: 0.0
-      y: 0.0
-      z: 0.0
+      x: -1.0
+      y: 1.0
+      z: -0.3
     orientation:
       x: 0.0
       y: 0.0
@@ -181,9 +181,9 @@ SuspensionPosition:
   - frame: wheel_rr_mount
     childframe: wheel_rr
     translation:
-      x: 0.0
-      y: 0.0
-      z: 0.0
+      x: -1.0
+      y: -1.0
+      z: -0.3
     orientation:
       x: 0.0
       y: 0.0
