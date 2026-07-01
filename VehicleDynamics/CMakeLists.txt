@@ -30,6 +30,11 @@ if(NOT TARGET wrench)
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../Wrench ${CMAKE_CURRENT_BINARY_DIR}/Wrench)
 endif()
 
+if(NOT TARGET raylib)
+    set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../raylib ${CMAKE_CURRENT_BINARY_DIR}/raylib)
+endif()
+
 find_package(yaml-cpp REQUIRED)
 
 set(SRC_COMMON
@@ -50,4 +55,4 @@ target_compile_features(vehicleDynamics PRIVATE cxx_std_17)
 
 add_executable(vehicleDynamicstest src/main.cpp)
 target_include_directories(vehicleDynamicstest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(vehicleDynamicstest PRIVATE vehicleDynamics)
+target_link_libraries(vehicleDynamicstest PRIVATE vehicleDynamics raylib)
